@@ -1,0 +1,524 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Estaciones - RED OPERADORA CANTOLAO</title>
+<style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#f5f7fb;color:#18202a}header{position:sticky;top:0;background:white;padding:18px 16px;border-bottom:1px solid #ddd;z-index:10}h1{font-size:20px;margin:0 0 10px}#q{width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #bbb;border-radius:12px;font-size:16px}main{max-width:900px;margin:auto;padding:12px}.station{background:white;border:1px solid #e2e6ec;border-radius:16px;padding:16px;margin:10px 0;display:flex;gap:14px;justify-content:space-between;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}h2{font-size:17px;margin:0 0 5px}p{margin:3px 0;font-size:14px}small{color:#687385}.btn{display:inline-block;text-align:center;text-decoration:none;background:#1a73e8;color:white;padding:11px 13px;border-radius:10px;font-weight:650;white-space:nowrap}@media(max-width:600px){.station{display:block}.btn{margin-top:12px;width:100%;box-sizing:border-box}}
+.locate{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}.locate button{border:0;background:#188038;color:#fff;padding:12px 14px;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer}.locate button:disabled{opacity:.6;cursor:wait}#nearest{display:none;margin:14px auto 4px;max-width:900px;background:#eaf3ff;border:1px solid #c4dcff;border-radius:16px;padding:16px;box-sizing:border-box}#nearest h2{margin:0 0 6px;font-size:18px}#nearest .distance{font-weight:700}#status{font-size:13px;color:#5f6368;margin-top:7px}.nearest-highlight{outline:3px solid #188038;scroll-margin-top:150px}
+</style></head><body><header><h1>Estaciones - RED OPERADORA CANTOLAO (118)</h1><input id="q" type="search" placeholder="Buscar estación, distrito o dirección…"><div class="locate"><button id="findNearest" type="button">📍 Encontrar estación más cercana</button></div><div id="status"></div></header><section id="nearest"></section><main id="list"><article class="station" data-search="arequipa jorge chavez av. jorge chavez 501 con calle garci carbajal iv centenario" data-lat="-16.406768" data-lng="-71.534609">
+<div><h2>JORGE CHAVEZ</h2><p><strong>AREQUIPA</strong></p><p>AV. JORGE CHAVEZ 501 CON CALLE GARCI CARBAJAL IV CENTENARIO</p><small>-16.406768, -71.534609</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-16.406768%2C-71.534609" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="arequipa sevilla av. bolognesi 904" data-lat="-16.371559" data-lng="-71.544483">
+<div><h2>SEVILLA</h2><p><strong>AREQUIPA</strong></p><p>Av. BOLOGNESI 904</p><small>-16.371559, -71.544483</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-16.371559%2C-71.544483" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="arequipa zamacola av. aviacion 2004" data-lat="-16.355459" data-lng="-71.566302">
+<div><h2>ZAMACOLA</h2><p><strong>AREQUIPA</strong></p><p>AV. AVIACION 2004</p><small>-16.355459, -71.566302</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-16.355459%2C-71.566302" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="ate vitarte central v. raul haya de la torre 2970 esq. santa rosa" data-lat="-12.058032" data-lng="-76.971298">
+<div><h2>CENTRAL</h2><p><strong>ATE VITARTE</strong></p><p>V. RAUL HAYA DE LA TORRE 2970 ESQ. SANTA ROSA</p><small>-12.058032, -76.971298</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.058032%2C-76.971298" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="ate vitarte graco av. separadora industrial n° 2503 esquina con los ingenieros" data-lat="-12.059839" data-lng="-76.951305">
+<div><h2>GRACO</h2><p><strong>ATE VITARTE</strong></p><p>AV. SEPARADORA INDUSTRIAL N° 2503 ESQUINA CON LOS INGENIEROS</p><small>-12.059839, -76.951305</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.059839%2C-76.951305" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="ate vitarte la molina av. la molina 448 urb. el artesano" data-lat="-12.061937" data-lng="-76.961495">
+<div><h2>LA MOLINA</h2><p><strong>ATE VITARTE</strong></p><p>AV. LA MOLINA 448 URB. EL ARTESANO</p><small>-12.061937, -76.961495</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.061937%2C-76.961495" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="ate vitarte los sauces av. nicolas ayllon 1912" data-lat="-12.064211" data-lng="-76.986889">
+<div><h2>LOS SAUCES</h2><p><strong>ATE VITARTE</strong></p><p>AV. NICOLAS AYLLON 1912</p><small>-12.064211, -76.986889</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.064211%2C-76.986889" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="ate vitarte mayorazgo av. separadora industrial 2985 mayorazgo" data-lat="-12.053097" data-lng="-76.941839">
+<div><h2>MAYORAZGO</h2><p><strong>ATE VITARTE</strong></p><p>AV. SEPARADORA INDUSTRIAL 2985 MAYORAZGO</p><small>-12.053097, -76.941839</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.053097%2C-76.941839" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="ate vitarte montecarlo av. evitamiento 1904 urb. los parques de monterrico mz b lote 01 al 06" data-lat="-12.077125" data-lng="-76.97608">
+<div><h2>MONTECARLO</h2><p><strong>ATE VITARTE</strong></p><p>AV. EVITAMIENTO 1904 URB. LOS PARQUES DE MONTERRICO MZ B LOTE 01 al 06</p><small>-12.077125, -76.97608</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.077125%2C-76.97608" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="ate vitarte santa ana av. nicolás ayllón 7176, urb. parcelación la estrella, ate" data-lat="-12.01691" data-lng="-76.891403">
+<div><h2>SANTA ANA</h2><p><strong>ATE VITARTE</strong></p><p>Av. Nicolás Ayllón 7176, urb. Parcelación La Estrella, Ate</p><small>-12.01691, -76.891403</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.01691%2C-76.891403" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="barranco barranco republica de panama 290" data-lat="-12.13899" data-lng="-77.017625">
+<div><h2>BARRANCO</h2><p><strong>BARRANCO</strong></p><p>REPUBLICA DE PANAMA 290</p><small>-12.13899, -77.017625</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.13899%2C-77.017625" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="bellavista gene av. oscar r. benavides 4600 esq. sn" data-lat="-12.053274" data-lng="-77.095477">
+<div><h2>GENE</h2><p><strong>BELLAVISTA</strong></p><p>AV. OSCAR R. BENAVIDES 4600 ESQ. SN</p><small>-12.053274, -77.095477</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.053274%2C-77.095477" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="bellavista vigil av. almirante grau 1300 cruce con jirón vigil" data-lat="-12.0613938" data-lng="-77.1339415">
+<div><h2>VIGIL</h2><p><strong>BELLAVISTA</strong></p><p>AV. ALMIRANTE GRAU 1300 CRUCE CON JIRÓN VIGIL</p><small>-12.0613938, -77.1339415</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.0613938%2C-77.1339415" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="breña breña av. venezuela 1315" data-lat="-12.055637" data-lng="-77.052643">
+<div><h2>BREÑA</h2><p><strong>BREÑA</strong></p><p>AV. VENEZUELA 1315</p><small>-12.055637, -77.052643</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.055637%2C-77.052643" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="callao cantolao av. faucett 6000– callao" data-lat="-11.997052" data-lng="-77.124632">
+<div><h2>CANTOLAO</h2><p><strong>CALLAO</strong></p><p>AV. FAUCETT 6000– CALLAO</p><small>-11.997052, -77.124632</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.997052%2C-77.124632" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="callao centenario av. coronel nestor gambetta n° 115" data-lat="-12.050358" data-lng="-77.12611">
+<div><h2>CENTENARIO</h2><p><strong>CALLAO</strong></p><p>AV. CORONEL NESTOR GAMBETTA N° 115</p><small>-12.050358, -77.12611</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.050358%2C-77.12611" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="callao ee.ss. elaion av. argentina 2920, callao" data-lat="-12.049811" data-lng="-77.113569">
+<div><h2>EE.SS. ELAION</h2><p><strong>CALLAO</strong></p><p>AV. ARGENTINA 2920, callao</p><small>-12.049811, -77.113569</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.049811%2C-77.113569" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="callao ees. revoredo av. faucett 2900, callao, callao" data-lat="-12.027377" data-lng="-77.10273">
+<div><h2>EES. REVOREDO</h2><p><strong>CALLAO</strong></p><p>AV. FAUCETT 2900, Callao, Callao</p><small>-12.027377, -77.10273</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.027377%2C-77.10273" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="callao gambeta av. nestor  gambetta 1295, callao" data-lat="-12.038388" data-lng="-77.127376">
+<div><h2>GAMBETA</h2><p><strong>CALLAO</strong></p><p>Av. NESTOR  GAMBETTA 1295, CALLAO</p><small>-12.038388, -77.127376</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.038388%2C-77.127376" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="callao la reserva av. coronel nestor gambetta n° 10548 ex fundo marquez sector 10b -ventanilla" data-lat="-11.94141" data-lng="-77.130756">
+<div><h2>LA RESERVA</h2><p><strong>CALLAO</strong></p><p>AV. CORONEL NESTOR GAMBETTA N° 10548 EX FUNDO MARQUEZ SECTOR 10B -VENTANILLA</p><small>-11.94141, -77.130756</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.94141%2C-77.130756" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="callao loayza av. tomas valle esq. los dominicos -urb.jorge chavez" data-lat="-12.013952" data-lng="-77.095355">
+<div><h2>LOAYZA</h2><p><strong>CALLAO</strong></p><p>AV. TOMAS VALLE ESQ. LOS DOMINICOS -URB.JORGE CHAVEZ</p><small>-12.013952, -77.095355</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.013952%2C-77.095355" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="callao neuquen av. faucett  377" data-lat="-12.05" data-lng="-77.098486">
+<div><h2>NEUQUEN</h2><p><strong>CALLAO</strong></p><p>AV. FAUCETT  377</p><small>-12.05, -77.098486</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.05%2C-77.098486" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="camana genova 1 av. samuel pastor 1516 hurangal" data-lat="-16.596758" data-lng="-72.704825">
+<div><h2>GENOVA 1</h2><p><strong>CAMANA</strong></p><p>AV. SAMUEL PASTOR 1516 HURANGAL</p><small>-16.596758, -72.704825</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-16.596758%2C-72.704825" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="camana genova 3 car. panamericana sur km. 828.localidad hda el medio" data-lat="-16.587754" data-lng="-72.720722">
+<div><h2>GENOVA 3</h2><p><strong>CAMANA</strong></p><p>CAR. PANAMERICANA SUR KM. 828.LOCALIDAD HDA EL MEDIO</p><small>-16.587754, -72.720722</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-16.587754%2C-72.720722" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="cañete mellizas i playa s.j barcelona autopista sur km 88" data-lat="-12.696268" data-lng="-76.64376">
+<div><h2>MELLIZAS I</h2><p><strong>CAÑETE</strong></p><p>PLAYA S.J BARCELONA AUTOPISTA SUR KM 88</p><small>-12.696268, -76.64376</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.696268%2C-76.64376" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="cañete mellizas ii playa s.j barcelona autopista sur km 88" data-lat="-12.695833" data-lng="-76.643108">
+<div><h2>MELLIZAS II</h2><p><strong>CAÑETE</strong></p><p>PLAYA S.J BARCELONA AUTOPISTA SUR KM 88</p><small>-12.695833, -76.643108</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.695833%2C-76.643108" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="chaclacayo laravil nicolas ayllon 2274 chaclacayo - sta ines" data-lat="-11.970986" data-lng="-76.753476">
+<div><h2>LARAVIL</h2><p><strong>CHACLACAYO</strong></p><p>NICOLAS AYLLON 2274 CHACLACAYO - STA INES</p><small>-11.970986, -76.753476</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.970986%2C-76.753476" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="chancay chancay 1 del pino km 77.5 de la carretera panamericana norte, chancay provincia de lima" data-lat="-11.600712" data-lng="-77.247452">
+<div><h2>CHANCAY 1 DEL PINO</h2><p><strong>CHANCAY</strong></p><p>KM 77.5 de la Carretera Panamericana Norte, Chancay provincia de Lima</p><small>-11.600712, -77.247452</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.600712%2C-77.247452" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="chancay chancay 2 carretera panamericana norte km 82" data-lat="-11.559729" data-lng="-77.266179">
+<div><h2>CHANCAY 2</h2><p><strong>CHANCAY</strong></p><p>Carretera Panamericana Norte Km 82</p><small>-11.559729, -77.266179</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.559729%2C-77.266179" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="chiclayo la victoria av. los  incas-100  y  av.chinchaysuyo - lavictoria" data-lat="-6.788203" data-lng="-79.844418">
+<div><h2>LA VICTORIA</h2><p><strong>CHICLAYO</strong></p><p>AV. LOS  INCAS-100  Y  AV.CHINCHAYSUYO - LAVICTORIA</p><small>-6.788203, -79.844418</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-6.788203%2C-79.844418" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="chiclayo milano av. victor raul haya de la torre 3240 - la victoria (carretera-panamericana-sur)" data-lat="-6.816169" data-lng="-79.829372">
+<div><h2>MILANO</h2><p><strong>CHICLAYO</strong></p><p>AV. VICTOR RAUL HAYA DE LA TORRE 3240 - LA VICTORIA (CARRETERA-PANAMERICANA-SUR)</p><small>-6.816169, -79.829372</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-6.816169%2C-79.829372" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="chimbote buenos aires mz. f lt. 5 av. pacifico esquina jr. jimbe - urb. buenos aires" data-lat="-9.120544" data-lng="-78.534719">
+<div><h2>BUENOS AIRES</h2><p><strong>CHIMBOTE</strong></p><p>MZ. F Lt. 5 AV. PACIFICO ESQUINA JR. JIMBE - URB. BUENOS AIRES</p><small>-9.120544, -78.534719</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-9.120544%2C-78.534719" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="chorrillos cebotto av. guardia civil 709 con av. el sol" data-lat="-12.17789" data-lng="-76.996173">
+<div><h2>CEBOTTO</h2><p><strong>CHORRILLOS</strong></p><p>AV. GUARDIA CIVIL 709 CON AV. EL SOL</p><small>-12.17789, -76.996173</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.17789%2C-76.996173" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="chorrillos cedros de villa av. alameda sur n°597 urb. los cedros de villa mz. c 3 lote 1 d" data-lat="-12.196552" data-lng="-77.010613">
+<div><h2>CEDROS DE VILLA</h2><p><strong>CHORRILLOS</strong></p><p>AV. ALAMEDA SUR N°597 URB. LOS CEDROS DE VILLA MZ. C 3 LOTE 1 D</p><small>-12.196552, -77.010613</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.196552%2C-77.010613" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="chorrillos la encantada avenida defensores del morro 2672, urb. santa leonor" data-lat="-12.1834636" data-lng="-77.0091751">
+<div><h2>LA ENCANTADA</h2><p><strong>CHORRILLOS</strong></p><p>Avenida Defensores del Morro 2672, Urb. Santa Leonor</p><small>-12.1834636, -77.0091751</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.1834636%2C-77.0091751" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="chorrillos tronco firme av. prolongacion huaylas 326" data-lat="-12.194266" data-lng="-77.002518">
+<div><h2>TRONCO FIRME</h2><p><strong>CHORRILLOS</strong></p><p>AV. PROLONGACION HUAYLAS 326</p><small>-12.194266, -77.002518</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.194266%2C-77.002518" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="comas es santa rosa av. túpac amaru km 16.5" data-lat="-11.901738" data-lng="-77.030505">
+<div><h2>ES SANTA ROSA</h2><p><strong>COMAS</strong></p><p>Av. Túpac Amaru Km 16.5</p><small>-11.901738, -77.030505</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.901738%2C-77.030505" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="cusco - cusco alameda alameda pachacuteq esquina av. ejercito s/n cusco cusco" data-lat="-13.526583" data-lng="-71.971742">
+<div><h2>ALAMEDA</h2><p><strong>CUSCO - Cusco</strong></p><p>ALAMEDA PACHACUTEQ ESQUINA AV. EJERCITO S/N CUSCO CUSCO</p><small>-13.526583, -71.971742</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-13.526583%2C-71.971742" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="cusco - wanchaq infancia av. infancia n° 551 wanchaq cusco" data-lat="-13.529526" data-lng="-71.968416">
+<div><h2>INFANCIA</h2><p><strong>CUSCO - WANCHAQ</strong></p><p>AV. INFANCIA N° 551 WANCHAQ CUSCO</p><small>-13.529526, -71.968416</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-13.529526%2C-71.968416" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="cusco- poroy f&amp;z carretera cusco urubamba km. 12.5 poroy cusco" data-lat="-13.488808" data-lng="-72.053392">
+<div><h2>F&amp;Z</h2><p><strong>CUSCO- POROY</strong></p><p>CARRETERA CUSCO URUBAMBA KM. 12.5 POROY CUSCO</p><small>-13.488808, -72.053392</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-13.488808%2C-72.053392" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="cusco- poroy petromundo carretera cusco urubamba km. 12.5 poroy cusco" data-lat="-13.489071" data-lng="-72.053043">
+<div><h2>PETROMUNDO</h2><p><strong>CUSCO- POROY</strong></p><p>CARRETERA CUSCO URUBAMBA KM. 12.5 POROY CUSCO</p><small>-13.489071, -72.053043</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-13.489071%2C-72.053043" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="el agustino san francisco 1ro  de mayo 3090 cooperativa huancayo" data-lat="-12.02996" data-lng="-76.999062">
+<div><h2>SAN FRANCISCO</h2><p><strong>EL AGUSTINO</strong></p><p>1ro  DE MAYO 3090 COOPERATIVA HUANCAYO</p><small>-12.02996, -76.999062</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.02996%2C-76.999062" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="huancayo san carlos a av. mártires del periodismo n° 308, san carlos" data-lat="-12.056533" data-lng="-75.202947">
+<div><h2>SAN CARLOS A</h2><p><strong>HUANCAYO</strong></p><p>Av. Mártires del Periodismo N° 308, San Carlos</p><small>-12.056533, -75.202947</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.056533%2C-75.202947" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="huancayo san carlos a av. mártires del periodismo n° 308, san carlos" data-lat="-12.056533" data-lng="-75.202947">
+<div><h2>SAN CARLOS A</h2><p><strong>HUANCAYO</strong></p><p>Av. Mártires del Periodismo N° 308, San Carlos</p><small>-12.056533, -75.202947</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.056533%2C-75.202947" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="huancayo - chilca chilca av. panamericana sur n° 350, chilca" data-lat="-12.091779" data-lng="-75.213171">
+<div><h2>CHILCA</h2><p><strong>HUANCAYO - Chilca</strong></p><p>Av. Panamericana Sur N° 350, Chilca</p><small>-12.091779, -75.213171</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.091779%2C-75.213171" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="huancayo - chilca chilca av. panamericana sur n° 350, chilca" data-lat="-12.091779" data-lng="-75.213171">
+<div><h2>CHILCA</h2><p><strong>HUANCAYO - Chilca</strong></p><p>Av. Panamericana Sur N° 350, Chilca</p><small>-12.091779, -75.213171</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.091779%2C-75.213171" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="huancayo -pilcomayo sicaya carr. central km. 3, pilcomayo" data-lat="-12.032954" data-lng="-75.263716">
+<div><h2>SICAYA</h2><p><strong>HUANCAYO -Pilcomayo</strong></p><p>Carr. Central Km. 3, Pilcomayo</p><small>-12.032954, -75.263716</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.032954%2C-75.263716" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="huancayo -pilcomayo sicaya carr. central km. 3, pilcomayo" data-lat="-12.032954" data-lng="-75.263716">
+<div><h2>SICAYA</h2><p><strong>HUANCAYO -Pilcomayo</strong></p><p>Carr. Central Km. 3, Pilcomayo</p><small>-12.032954, -75.263716</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.032954%2C-75.263716" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="huancayo -san agustín de cajas cajas car. central km 8,800, san agustín de cajas" data-lat="-12.000198" data-lng="-75.252253">
+<div><h2>CAJAS</h2><p><strong>HUANCAYO -San Agustín de Cajas</strong></p><p>Car. Central Km 8,800, San Agustín de Cajas</p><small>-12.000198, -75.252253</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.000198%2C-75.252253" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="huaral huaral av chancay s/n esq julio c tello" data-lat="-11.498132" data-lng="-77.214548">
+<div><h2>HUARAL</h2><p><strong>HUARAL</strong></p><p>Av Chancay s/n esq Julio C Tello</p><small>-11.498132, -77.214548</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.498132%2C-77.214548" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="independencia comas av. gerardo unger n° 3689 -urb. habilitacion panamericana norte" data-lat="-11.989347" data-lng="-77.05726">
+<div><h2>COMAS</h2><p><strong>INDEPENDENCIA</strong></p><p>AV. GERARDO UNGER N° 3689 -URB. HABILITACION PANAMERICANA NORTE</p><small>-11.989347, -77.05726</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.989347%2C-77.05726" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="independencia super repsol alfredo mendiola 2000 (a una cuadra terminal fiori)" data-lat="-12.005809" data-lng="-77.061305">
+<div><h2>SUPER REPSOL</h2><p><strong>INDEPENDENCIA</strong></p><p>ALFREDO MENDIOLA 2000 (A UNA CUADRA TERMINAL FIORI)</p><small>-12.005809, -77.061305</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.005809%2C-77.061305" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="jesus maria sarmiento av. arenales 400 con republica de chile" data-lat="-12.068754" data-lng="-77.038007">
+<div><h2>SARMIENTO</h2><p><strong>JESUS MARIA</strong></p><p>AV. ARENALES 400 CON REPUBLICA DE CHILE</p><small>-12.068754, -77.038007</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.068754%2C-77.038007" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="la molina el sauce av. la molina 2880" data-lat="-12.083817" data-lng="-76.927588">
+<div><h2>EL SAUCE</h2><p><strong>LA MOLINA</strong></p><p>AV. LA MOLINA 2880</p><small>-12.083817, -76.927588</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.083817%2C-76.927588" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="la molina la rotonda av. la molina n° 1310" data-lat="-12.075204" data-lng="-76.955074">
+<div><h2>LA ROTONDA</h2><p><strong>LA MOLINA</strong></p><p>AV. LA MOLINA N° 1310</p><small>-12.075204, -76.955074</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.075204%2C-76.955074" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="la molina saimon raul ferrero 1313 urb. sirius ii etapa" data-lat="-12.090954" data-lng="-76.951247">
+<div><h2>SAIMON</h2><p><strong>LA MOLINA</strong></p><p>RAUL FERRERO 1313 URB. SIRIUS II ETAPA</p><small>-12.090954, -76.951247</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.090954%2C-76.951247" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="la molina stop javier prado 5323 re. mont." data-lat="-12.075078" data-lng="-76.963455">
+<div><h2>STOP</h2><p><strong>LA MOLINA</strong></p><p>JAVIER PRADO 5323 RE. MONT.</p><small>-12.075078, -76.963455</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.075078%2C-76.963455" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="la victoria assa av. jaime bauzate y meza n° 1050" data-lat="-12.063417" data-lng="-77.020572">
+<div><h2>ASSA</h2><p><strong>LA VICTORIA</strong></p><p>AV. JAIME BAUZATE Y MEZA N° 1050</p><small>-12.063417, -77.020572</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.063417%2C-77.020572" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="la victoria grau 2 av. paseo de la republica # 301" data-lat="-12.060308" data-lng="-77.035169">
+<div><h2>GRAU 2</h2><p><strong>LA VICTORIA</strong></p><p>AV. PASEO DE LA REPUBLICA # 301</p><small>-12.060308, -77.035169</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.060308%2C-77.035169" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="la victoria iquitos av. iquitos 1100 - la victoria" data-lat="-12.071596" data-lng="-77.029803">
+<div><h2>IQUITOS</h2><p><strong>LA VICTORIA</strong></p><p>Av. Iquitos 1100 - LA VICTORIA</p><small>-12.071596, -77.029803</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.071596%2C-77.029803" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="la victoria lebar av. nicolas arriola esq. javier prado" data-lat="-12.089873" data-lng="-77.017438">
+<div><h2>LEBAR</h2><p><strong>LA VICTORIA</strong></p><p>AV. NICOLAS ARRIOLA ESQ. JAVIER PRADO</p><small>-12.089873, -77.017438</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.089873%2C-77.017438" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="la victoria mexico 1 av. méxico n° 1291 - 1295 esquina con jr. parinacochas" data-lat="-12.0732791" data-lng="-77.0167315">
+<div><h2>MEXICO 1</h2><p><strong>LA VICTORIA</strong></p><p>Av. México N° 1291 - 1295 Esquina con Jr. Parinacochas</p><small>-12.0732791, -77.0167315</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.0732791%2C-77.0167315" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="lima argentina 2 av. argentina 3003-3005" data-lat="-12.046803" data-lng="-77.079415">
+<div><h2>ARGENTINA 2</h2><p><strong>LIMA</strong></p><p>Av. Argentina 3003-3005</p><small>-12.046803, -77.079415</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.046803%2C-77.079415" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="lima arrieta av.argentina 2501-2505 y leonardo arrieta" data-lat="-12.046237" data-lng="-77.072561">
+<div><h2>ARRIETA</h2><p><strong>LIMA</strong></p><p>AV.ARGENTINA 2501-2505 Y LEONARDO ARRIETA</p><small>-12.046237, -77.072561</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.046237%2C-77.072561" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="lima colonial av. colonial 1817-1821" data-lat="-12.048538" data-lng="-77.065169">
+<div><h2>COLONIAL</h2><p><strong>LIMA</strong></p><p>AV. COLONIAL 1817-1821</p><small>-12.048538, -77.065169</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.048538%2C-77.065169" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="lima colonial 2 av. colonial 140-160-164-178/hurarochiri n° 591" data-lat="-12.046458" data-lng="-77.044249">
+<div><h2>COLONIAL 2</h2><p><strong>LIMA</strong></p><p>AV. COLONIAL 140-160-164-178/HURAROCHIRI N° 591</p><small>-12.046458, -77.044249</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.046458%2C-77.044249" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="lima colonial a av. oscar r. benavides 930" data-lat="-12.0470992" data-lng="-77.0537825">
+<div><h2>COLONIAL A</h2><p><strong>LIMA</strong></p><p>AV. OSCAR R. BENAVIDES 930</p><small>-12.0470992, -77.0537825</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.0470992%2C-77.0537825" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="lima dueñas av. nicolás dueñas 606 – cercado de lima" data-lat="-12.042228" data-lng="-77.065643">
+<div><h2>DUEÑAS</h2><p><strong>LIMA</strong></p><p>Av. Nicolás Dueñas 606 – Cercado de Lima</p><small>-12.042228, -77.065643</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.042228%2C-77.065643" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="lima monumental av. venezuela  1820 esquina con  av. tingo maria n° 994" data-lat="-12.055694" data-lng="-77.058139">
+<div><h2>MONUMENTAL</h2><p><strong>LIMA</strong></p><p>AV. VENEZUELA  1820 ESQUINA CON  AV. TINGO MARIA N° 994</p><small>-12.055694, -77.058139</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.055694%2C-77.058139" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="lima universitaria 2 calle materiales 150-154" data-lat="-12.043028" data-lng="-77.077076">
+<div><h2>UNIVERSITARIA 2</h2><p><strong>LIMA</strong></p><p>CALLE MATERIALES 150-154</p><small>-12.043028, -77.077076</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.043028%2C-77.077076" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="miraflores arequipa av. arequipa 5080 y enrique palacios" data-lat="-12.116887" data-lng="-77.029437">
+<div><h2>AREQUIPA</h2><p><strong>MIRAFLORES</strong></p><p>AV. AREQUIPA 5080 Y ENRIQUE PALACIOS</p><small>-12.116887, -77.029437</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.116887%2C-77.029437" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="miraflores el rosedal av. rooselvelt 6491 - miraflores" data-lat="-12.130238" data-lng="-77.017959">
+<div><h2>EL ROSEDAL</h2><p><strong>MIRAFLORES</strong></p><p>AV. ROOSELVELT 6491 - MIRAFLORES</p><small>-12.130238, -77.017959</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.130238%2C-77.017959" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="miraflores es parque mora av. angamos oeste 1685" data-lat="-12.11072" data-lng="-77.046418">
+<div><h2>ES PARQUE MORA</h2><p><strong>MIRAFLORES</strong></p><p>Av. Angamos Oeste 1685</p><small>-12.11072, -77.046418</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.11072%2C-77.046418" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="miraflores independencia angamos este 498, miraflores" data-lat="-12.113589" data-lng="-77.026469">
+<div><h2>INDEPENDENCIA</h2><p><strong>MIRAFLORES</strong></p><p>ANGAMOS ESTE 498, MIRAFLORES</p><small>-12.113589, -77.026469</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.113589%2C-77.026469" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="miraflores miraflores av. rooselvelt 5672 miraflores" data-lat="-12.120317" data-lng="-77.01832">
+<div><h2>MIRAFLORES</h2><p><strong>MIRAFLORES</strong></p><p>AV. ROOSELVELT 5672 MIRAFLORES</p><small>-12.120317, -77.01832</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.120317%2C-77.01832" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="miraflores reducto av.  28 de julio 904 miraflores" data-lat="-12.129385" data-lng="-77.023463">
+<div><h2>REDUCTO</h2><p><strong>MIRAFLORES</strong></p><p>AV.  28 DE JULIO 904 MIRAFLORES</p><small>-12.129385, -77.023463</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.129385%2C-77.023463" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="miraflores santa maria av. el ejercito 290" data-lat="-12.117507" data-lng="-77.044241">
+<div><h2>SANTA MARIA</h2><p><strong>MIRAFLORES</strong></p><p>AV. EL EJERCITO 290</p><small>-12.117507, -77.044241</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.117507%2C-77.044241" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="miraflores tenaud av. arequipa 4305 con carlos tenaud" data-lat="-12.108849" data-lng="-77.030556">
+<div><h2>TENAUD</h2><p><strong>MIRAFLORES</strong></p><p>AV. AREQUIPA 4305 CON CARLOS TENAUD</p><small>-12.108849, -77.030556</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.108849%2C-77.030556" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="moquegua /mariscal nieto esmo asc. alto pedregal, av. carretera binacional mz. a, lote 1 - moquegua, mariscal nieto, moquegua" data-lat="-17.188895" data-lng="-70.921203">
+<div><h2>ESMO</h2><p><strong>MOQUEGUA /Mariscal Nieto</strong></p><p>Asc. Alto Pedregal, Av. Carretera Binacional Mz. A, Lote 1 - Moquegua, Mariscal Nieto, Moquegua</p><small>-17.188895, -70.921203</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-17.188895%2C-70.921203" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="pachacamac chepen av. lima esquina calle la paz, urb. los portales de pachacamac" data-lat="-12.2384949" data-lng="-76.9129002">
+<div><h2>CHEPEN</h2><p><strong>PACHACAMAC</strong></p><p>Av. Lima esquina Calle La Paz, Urb. Los Portales de Pachacamac</p><small>-12.2384949, -76.9129002</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.2384949%2C-76.9129002" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="pueblo libre bolivar 2 esq. av. bolivar 330 con rio urb.bahia" data-lat="-12.073424" data-lng="-77.055877">
+<div><h2>BOLIVAR 2</h2><p><strong>PUEBLO LIBRE</strong></p><p>ESQ. AV. BOLIVAR 330 CON RIO URB.BAHIA</p><small>-12.073424, -77.055877</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.073424%2C-77.055877" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="puente piedra los gramadales carretera  panamericana  norte  km.32" data-lat="-11.853591" data-lng="-77.088884">
+<div><h2>LOS GRAMADALES</h2><p><strong>PUENTE PIEDRA</strong></p><p>CARRETERA  PANAMERICANA  NORTE  KM.32</p><small>-11.853591, -77.088884</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.853591%2C-77.088884" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="puente piedra pro av. alfredo mendiola #7650 km 21.5 urbanización pro industrial" data-lat="-11.939853" data-lng="-77.071077">
+<div><h2>PRO</h2><p><strong>PUENTE PIEDRA</strong></p><p>Av. Alfredo Mendiola #7650 Km 21.5 Urbanización Pro Industrial</p><small>-11.939853, -77.071077</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.939853%2C-77.071077" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="puente piedra san carlos panamericana norte km 28.3" data-lat="-11.882867" data-lng="-77.067989">
+<div><h2>SAN CARLOS</h2><p><strong>PUENTE PIEDRA</strong></p><p>PANAMERICANA NORTE KM 28.3</p><small>-11.882867, -77.067989</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.882867%2C-77.067989" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="rimac san cristobal av. 9 de octubre n° 508" data-lat="-12.03908" data-lng="-77.016024">
+<div><h2>SAN CRISTOBAL</h2><p><strong>RIMAC</strong></p><p>AV. 9 DE OCTUBRE N° 508</p><small>-12.03908, -77.016024</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.03908%2C-77.016024" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="rimac tarapaca av. samuel alcazar 801" data-lat="-12.026932" data-lng="-77.033602">
+<div><h2>TARAPACA</h2><p><strong>RIMAC</strong></p><p>AV. SAMUEL ALCAZAR 801</p><small>-12.026932, -77.033602</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.026932%2C-77.033602" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san borja angamos av. primavera 1095" data-lat="-12.110211" data-lng="-76.979848">
+<div><h2>ANGAMOS</h2><p><strong>SAN BORJA</strong></p><p>AV. PRIMAVERA 1095</p><small>-12.110211, -76.979848</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.110211%2C-76.979848" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san borja el avion av aviacion 3401" data-lat="-12.105398" data-lng="-77.000966">
+<div><h2>EL AVION</h2><p><strong>SAN BORJA</strong></p><p>AV AVIACION 3401</p><small>-12.105398, -77.000966</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.105398%2C-77.000966" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san borja san borja av. javier prado este n° 3160" data-lat="-12.086706" data-lng="-76.991906">
+<div><h2>SAN BORJA</h2><p><strong>SAN BORJA</strong></p><p>AV. JAVIER PRADO ESTE N° 3160</p><small>-12.086706, -76.991906</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.086706%2C-76.991906" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san isidro el parque av. guardia civil 1090" data-lat="-12.103543" data-lng="-77.014952">
+<div><h2>EL PARQUE</h2><p><strong>SAN ISIDRO</strong></p><p>AV. GUARDIA CIVIL 1090</p><small>-12.103543, -77.014952</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.103543%2C-77.014952" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san isidro es dos de mayo av. dos de mayo 1376 – 1380" data-lat="-12.092172" data-lng="-77.04498">
+<div><h2>ES DOS DE MAYO</h2><p><strong>SAN ISIDRO</strong></p><p>Av. Dos de Mayo 1376 – 1380</p><small>-12.092172, -77.04498</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.092172%2C-77.04498" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san isidro parodi pasaje parodi  220 esquina  con javier  prado" data-lat="-12.091536" data-lng="-77.030255">
+<div><h2>PARODI</h2><p><strong>SAN ISIDRO</strong></p><p>PASAJE PARODI  220 ESQUINA  CON JAVIER  PRADO</p><small>-12.091536, -77.030255</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.091536%2C-77.030255" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san isidro parque sur av. guardia civil 1109 , esquina parque  sur , san isidro" data-lat="-12.1035496" data-lng="-77.0149744">
+<div><h2>PARQUE SUR</h2><p><strong>SAN ISIDRO</strong></p><p>Av. Guardia Civil 1109 , esquina parque  Sur , San Isidro</p><small>-12.1035496, -77.0149744</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.1035496%2C-77.0149744" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san isidro tiki too av. jose galvez barrenechea 211 esq. con av. parque norte" data-lat="-12.091998" data-lng="-77.013682">
+<div><h2>TIKI TOO</h2><p><strong>SAN ISIDRO</strong></p><p>AV. JOSE GALVEZ BARRENECHEA 211 ESQ. CON AV. PARQUE NORTE</p><small>-12.091998, -77.013682</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.091998%2C-77.013682" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san juan de lurigancho los angeles av. próceres de la independencia n° 5324 – sjl" data-lat="-11.9465587" data-lng="-76.9838309">
+<div><h2>LOS ANGELES</h2><p><strong>SAN JUAN DE LURIGANCHO</strong></p><p>Av. Próceres de la Independencia N° 5324 – SJL</p><small>-11.9465587, -76.9838309</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.9465587%2C-76.9838309" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san juan de lurigancho tri star av. próceres de independencia n° 1487 urb. los jardines – sjl" data-lat="-12.010174" data-lng="-77.003782">
+<div><h2>TRI STAR</h2><p><strong>SAN JUAN DE LURIGANCHO</strong></p><p>Av. Próceres de Independencia N° 1487 Urb. Los Jardines – SJL</p><small>-12.010174, -77.003782</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.010174%2C-77.003782" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san juan de miraflores san juan av los héroes 1366 san juan de miraflores" data-lat="-12.161416" data-lng="-76.956498">
+<div><h2>SAN JUAN</h2><p><strong>SAN JUAN DE MIRAFLORES</strong></p><p>Av Los Héroes 1366 San Juan de Miraflores</p><small>-12.161416, -76.956498</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.161416%2C-76.956498" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san luis arriola av. nicolas arriola 2140, san luis," data-lat="-12.071676" data-lng="-77.002354">
+<div><h2>ARRIOLA</h2><p><strong>SAN LUIS</strong></p><p>AV. NICOLAS ARRIOLA 2140, SAN LUIS,</p><small>-12.071676, -77.002354</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.071676%2C-77.002354" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san martin de porres los milagros av. tupac amaru n°1453" data-lat="-12.010514" data-lng="-77.05335">
+<div><h2>LOS MILAGROS</h2><p><strong>SAN MARTIN DE PORRES</strong></p><p>AV. TUPAC AMARU N°1453</p><small>-12.010514, -77.05335</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.010514%2C-77.05335" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san martin de porres universitaria av. universitaria norte n° 2901" data-lat="-11.988134" data-lng="-77.080911">
+<div><h2>UNIVERSITARIA</h2><p><strong>SAN MARTIN DE PORRES</strong></p><p>AV. UNIVERSITARIA NORTE N° 2901</p><small>-11.988134, -77.080911</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.988134%2C-77.080911" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san miguel chubut av. república de venezuela 4843, san miguel" data-lat="-12.06155" data-lng="-77.08696">
+<div><h2>CHUBUT</h2><p><strong>SAN MIGUEL</strong></p><p>Av. República de Venezuela 4843, San Miguel</p><small>-12.06155, -77.08696</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.06155%2C-77.08696" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san miguel faucett av. faucett  481  con  miguel  hidalgo" data-lat="-12.065011" data-lng="-77.097412">
+<div><h2>FAUCETT</h2><p><strong>SAN MIGUEL</strong></p><p>AV. FAUCETT  481  CON  MIGUEL  HIDALGO</p><small>-12.065011, -77.097412</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.065011%2C-77.097412" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="san miguel la marina 2 av. la  marina   2530" data-lat="-12.077781" data-lng="-77.089851">
+<div><h2>LA MARINA 2</h2><p><strong>SAN MIGUEL</strong></p><p>AV. LA  MARINA   2530</p><small>-12.077781, -77.089851</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.077781%2C-77.089851" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="surco el derby av. el derby 109, av. el derby lote. 1a urb, santiago de surco 15023" data-lat="-12.0989315" data-lng="-76.9709302">
+<div><h2>EL DERBY</h2><p><strong>SURCO</strong></p><p>Av. El Derby 109, Av. El Derby Lote. 1A Urb, Santiago de Surco 15023</p><small>-12.0989315, -76.9709302</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.0989315%2C-76.9709302" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="surco es surco av. roosevelt 400, esquina con parque alto" data-lat="-12.146509" data-lng="-77.009496">
+<div><h2>ES SURCO</h2><p><strong>SURCO</strong></p><p>Av. Roosevelt 400, esquina con Parque alto</p><small>-12.146509, -77.009496</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.146509%2C-77.009496" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="surco precursores av. primavera 1120 urb. valle hermoso" data-lat="-12.110493" data-lng="-76.979717">
+<div><h2>PRECURSORES</h2><p><strong>SURCO</strong></p><p>AV. PRIMAVERA 1120 URB. VALLE HERMOSO</p><small>-12.110493, -76.979717</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.110493%2C-76.979717" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="surco san blas av. proceres 105 con av. santiago de surco" data-lat="-12.1481099" data-lng="-76.986126">
+<div><h2>SAN BLAS</h2><p><strong>SURCO</strong></p><p>AV. PROCERES 105 CON AV. SANTIAGO DE SURCO</p><small>-12.1481099, -76.986126</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.1481099%2C-76.986126" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="surquillo angamos 2 av. angamos este n° 1715" data-lat="-12.112546" data-lng="-77.01346">
+<div><h2>ANGAMOS 2</h2><p><strong>SURQUILLO</strong></p><p>Av. Angamos Este N° 1715</p><small>-12.112546, -77.01346</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.112546%2C-77.01346" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="surquillo las tiendas av. andres aramburu n° 904-908" data-lat="-12.102309" data-lng="-77.020943">
+<div><h2>LAS TIENDAS</h2><p><strong>SURQUILLO</strong></p><p>AV. ANDRES ARAMBURU N° 904-908</p><small>-12.102309, -77.020943</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.102309%2C-77.020943" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="surquillo principal av. jose galvez barrenechea  1146" data-lat="-12.107381" data-lng="-77.010592">
+<div><h2>PRINCIPAL</h2><p><strong>SURQUILLO</strong></p><p>AV. JOSE GALVEZ BARRENECHEA  1146</p><small>-12.107381, -77.010592</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.107381%2C-77.010592" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="tacna lobitos calle hipolito unanue 990 tacna" data-lat="-18.007008" data-lng="-70.255752">
+<div><h2>LOBITOS</h2><p><strong>TACNA</strong></p><p>CALLE HIPOLITO UNANUE 990 TACNA</p><small>-18.007008, -70.255752</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-18.007008%2C-70.255752" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="trujillo flores del golf mz c lote 1, urb. las flores del golf   ii etapa" data-lat="-8.135284" data-lng="-79.036587">
+<div><h2>FLORES DEL GOLF</h2><p><strong>TRUJILLO</strong></p><p>MZ C LOTE 1, URB. LAS FLORES DEL GOLF   II ETAPA</p><small>-8.135284, -79.036587</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-8.135284%2C-79.036587" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="trujillo panamericana sur av. la marina 1170 (carretera panamericana sur km. 557)" data-lat="-8.138553" data-lng="-79.015374">
+<div><h2>PANAMERICANA SUR</h2><p><strong>TRUJILLO</strong></p><p>AV. LA MARINA 1170 (CARRETERA PANAMERICANA SUR KM. 557)</p><small>-8.138553, -79.015374</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-8.138553%2C-79.015374" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="trujillo primavera av. nicolas  de pierola 800-820  mz. a3" data-lat="-8.101038" data-lng="-79.03621">
+<div><h2>PRIMAVERA</h2><p><strong>TRUJILLO</strong></p><p>AV. NICOLAS  DE PIEROLA 800-820  MZ. A3</p><small>-8.101038, -79.03621</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-8.101038%2C-79.03621" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="trujillo san fernando av. nicolas  de  pierola 1251 urb. santa  ines" data-lat="-8.096971" data-lng="-79.03835">
+<div><h2>SAN FERNANDO</h2><p><strong>TRUJILLO</strong></p><p>AV. NICOLAS  DE  PIEROLA 1251 URB. SANTA  INES</p><small>-8.096971, -79.03835</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-8.096971%2C-79.03835" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="trujillo / huanchaco ultracom carretera panamericana norte km 569  aahh el milagro" data-lat="-8.041931" data-lng="-79.058916">
+<div><h2>ULTRACOM</h2><p><strong>TRUJILLO / Huanchaco</strong></p><p>Carretera Panamericana Norte Km 569  AAHH El Milagro</p><small>-8.041931, -79.058916</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-8.041931%2C-79.058916" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="ventanilla tierra autopista hacia ventanilla (av. nestor gambetta), sub parcela a6-2b-1" data-lat="-11.929529" data-lng="-77.129741">
+<div><h2>TIERRA</h2><p><strong>VENTANILLA</strong></p><p>AUTOPISTA HACIA VENTANILLA (AV. NESTOR GAMBETTA), SUB PARCELA A6-2B-1</p><small>-11.929529, -77.129741</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-11.929529%2C-77.129741" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article>
+<article class="station" data-search="villa el salvador villa el salvador av. central, cuadra 6, sector 1, grupo 3, mz j, lt 1, 2 y 24, villa el salvador" data-lat="-12.1930706" data-lng="-76.9454563">
+<div><h2>VILLA EL SALVADOR</h2><p><strong>VILLA EL SALVADOR</strong></p><p>Av. Central, Cuadra 6, Sector 1, Grupo 3, MZ J, LT 1, 2 y 24, Villa El Salvador</p><small>-12.1930706, -76.9454563</small></div>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=-12.1930706%2C-76.9454563" target="_blank" rel="noopener">Abrir en Google Maps</a>
+</article></main><script>
+const q=document.getElementById('q');
+const stations=[...document.querySelectorAll('.station')];
+q.addEventListener('input',()=>{const t=q.value.toLowerCase().trim();stations.forEach(s=>s.style.display=s.dataset.search.includes(t)?'':'none')});
+
+const btn=document.getElementById('findNearest');
+const statusEl=document.getElementById('status');
+const nearestEl=document.getElementById('nearest');
+
+function haversineKm(lat1, lon1, lat2, lon2){
+  const R=6371;
+  const dLat=(lat2-lat1)*Math.PI/180;
+  const dLon=(lon2-lon1)*Math.PI/180;
+  const a=Math.sin(dLat/2)**2+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
+  return 2*R*Math.asin(Math.sqrt(a));
+}
+
+function locate(){
+  if(!navigator.geolocation){statusEl.textContent='Tu navegador no admite ubicación.';return;}
+  btn.disabled=true; statusEl.textContent='Solicitando tu ubicación…'; nearestEl.style.display='none';
+  navigator.geolocation.getCurrentPosition(pos=>{
+    const {latitude,longitude}=pos.coords;
+    let best=null;
+    stations.forEach(el=>{
+      const lat=parseFloat(el.dataset.lat), lng=parseFloat(el.dataset.lng);
+      if(Number.isNaN(lat)||Number.isNaN(lng)) return;
+      const d=haversineKm(latitude,longitude,lat,lng);
+      if(!best||d<best.d) best={el,lat,lng,d};
+    });
+    stations.forEach(el=>el.classList.remove('nearest-highlight'));
+    if(!best){statusEl.textContent='No pude calcular una estación cercana.';btn.disabled=false;return;}
+    const name=best.el.querySelector('h2')?.textContent||'Estación';
+    const district=best.el.querySelector('p strong')?.textContent||'';
+    const ps=best.el.querySelectorAll('p');
+    const address=ps.length>1?ps[1].textContent:'';
+    const maps=`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(best.lat+','+best.lng)}&travelmode=driving`;
+    nearestEl.innerHTML=`<h2>📍 Más cercana: ${name}</h2><p><strong>${district}</strong></p><p>${address}</p><p class="distance">Aprox. ${best.d<1?(best.d*1000).toFixed(0)+' m':best.d.toFixed(2)+' km'} en línea recta</p><a class="btn" href="${maps}" target="_blank" rel="noopener">Cómo llegar en Google Maps</a>`;
+    nearestEl.style.display='block';
+    best.el.classList.add('nearest-highlight');
+    statusEl.textContent=`Ubicación detectada con precisión aproximada de ${Math.round(pos.coords.accuracy)} m.`;
+    btn.disabled=false;
+  },err=>{
+    const msgs={1:'Permiso de ubicación denegado. Actívalo para este sitio.',2:'No se pudo determinar tu ubicación.',3:'La ubicación tardó demasiado en responder.'};
+    statusEl.textContent=msgs[err.code]||'No se pudo obtener tu ubicación.';
+    btn.disabled=false;
+  },{enableHighAccuracy:true,timeout:12000,maximumAge:60000});
+}
+btn.addEventListener('click', locate);
+</script>
+</body></html>
