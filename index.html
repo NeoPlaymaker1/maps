@@ -37,7 +37,32 @@
         </div>
         <div class="actions">
           <button id="centerNearestBtn" class="secondary" type="button">Ver estación</button>
-          <a id="navigateBtn" class="primary" href="#" target="_blank" rel="noopener">Cómo llegar</a>
+          <button id="navigateBtn" class="primary" type="button">Cómo llegar</button>
+        </div>
+      </section>
+
+      <div id="navBackdrop" class="nav-backdrop hidden"></div>
+      <section id="navSheet" class="nav-sheet hidden" role="dialog" aria-modal="true" aria-labelledby="navTitle">
+        <div class="sheet-handle" aria-hidden="true"></div>
+        <div class="sheet-head">
+          <div>
+            <span class="eyebrow">ABRIR NAVEGACIÓN</span>
+            <h2 id="navTitle">Elige una aplicación</h2>
+            <p id="navStationName">—</p>
+          </div>
+          <button id="closeNavBtn" class="close-button" type="button" aria-label="Cerrar">×</button>
+        </div>
+        <div class="nav-options">
+          <a id="googleMapsNav" class="nav-option" href="#" target="_blank" rel="noopener">
+            <span class="nav-option-icon google-option">G</span>
+            <span><strong>Google Maps</strong><small>Abrir navegación hasta la estación</small></span>
+            <b>›</b>
+          </a>
+          <a id="wazeNav" class="nav-option" href="#" target="_blank" rel="noopener">
+            <span class="nav-option-icon waze-option">W</span>
+            <span><strong>Waze</strong><small>Abrir la ruta en Waze</small></span>
+            <b>›</b>
+          </a>
         </div>
       </section>
 

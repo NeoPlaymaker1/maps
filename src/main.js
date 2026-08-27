@@ -1,4 +1,5 @@
 import { Loader } from '@googlemaps/js-api-loader';
+import { MarkerClusterer, SuperClusterAlgorithm } from '@googlemaps/markerclusterer';
 import '../styles.css';
 import stations from '../stations.json';
 
@@ -6,9 +7,8 @@ const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 const MAP_ID = import.meta.env.VITE_GOOGLE_MAPS_MAP_ID || undefined;
 const DEFAULT_CENTER = { lat: -12.069392, lng: -77.047052 };
 const EARTH_RADIUS_M = 6371000;
-const MIN_GPS_MOVE_M = 8;
-const MAX_GPS_SILENCE_MS = 4000;
-const MAX_DEVICE_PIXEL_RATIO = 2;
+const MIN_GPS_MOVE_M = 10;
+const MAX_GPS_SILENCE_MS = 5000;
 
 const stationData = stations.map((station, index) => ({
   ...station,
@@ -18,8 +18,10 @@ const stationData = stations.map((station, index) => ({
 }));
 
 let map;
-let stationOverlay;
 let infoWindow;
+let markerClusterer;
+let stationMarkers = [];
+let userMarker = null;
 let watchId = null;
 let locationRequested = false;
 let lastLocation = null;
@@ -29,6 +31,9 @@ let nearestStation = null;
 let nearestIndex = -1;
 let lastNearestDistanceText = '';
 let lastStatusSignature = '';
+let navigationStation = null;
+let normalPinIcon;
+let nearestPinIcon;
 
 const statusCard = document.querySelector('#statusCard');
 const statusIcon = document.querySelector('#statusIcon');
@@ -42,6 +47,12 @@ const navigateBtn = document.querySelector('#navigateBtn');
 const centerNearestBtn = document.querySelector('#centerNearestBtn');
 const locateBtn = document.querySelector('#locateBtn');
 const fatal = document.querySelector('#fatal');
+const navBackdrop = document.querySelector('#navBackdrop');
+const navSheet = document.querySelector('#navSheet');
+const closeNavBtn = document.querySelector('#closeNavBtn');
+const navStationName = document.querySelector('#navStationName');
+const googleMapsNav = document.querySelector('#googleMapsNav');
+const wazeNav = document.querySelector('#wazeNav');
 
 function setStatus(title, subtitle, icon = '📍', eyebrow = 'Ubicación') {
   const signature = `${eyebrow}|${icon}|${title}|${subtitle}`;
@@ -82,10 +93,7 @@ function findNearest(position) {
     }
   }
 
-  return {
-    station: best,
-    distance: haversineMeters(position, best),
-  };
+  return { station: best, distance: haversineMeters(position, best) };
 }
 
 function formatDistance(meters) {
@@ -94,217 +102,136 @@ function formatDistance(meters) {
 }
 
 function googleMapsDirectionsUrl(station) {
-  return `https://www.google.com/maps/dir/?api=1&destination=${station.lat},${station.lng}&travelmode=driving`;
+  const destination = encodeURIComponent(`${station.lat},${station.lng}`);
+  return `https://www.google.com/maps/dir/?api=1&destination=${destination}&travelmode=driving&dir_action=navigate`;
 }
 
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#039;');
+function wazeDirectionsUrl(station) {
+  const coords = encodeURIComponent(`${station.lat},${station.lng}`);
+  return `https://waze.com/ul?ll=${coords}&navigate=yes`;
 }
 
-function metersPerPixel(latitude, zoom) {
-  return (156543.03392 * Math.cos((latitude * Math.PI) / 180)) / 2 ** zoom;
+function svgToDataUrl(svg) {
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
-function createStationCanvasOverlayClass() {
-  return class StationCanvasOverlay extends google.maps.OverlayView {
-  constructor(mapInstance, stationList) {
-    super();
-    this.mapInstance = mapInstance;
-    this.stationList = stationList;
-    this.stationLatLngs = stationList.map((station) => new google.maps.LatLng(station.lat, station.lng));
-    this.canvas = null;
-    this.context = null;
-    this.frameId = 0;
-    this.userPosition = null;
-    this.userLatLng = null;
-    this.nearestIndex = -1;
-    this.dpr = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
-    this.pixelWidth = 0;
-    this.pixelHeight = 0;
-    this.setMap(mapInstance);
-  }
+function createPinIcon(fill, stroke = '#ffffff', width = 28, height = 38) {
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 28 38">
+      <path d="M14 1.5C7.1 1.5 1.5 7.1 1.5 14c0 9.25 12.5 22.5 12.5 22.5S26.5 23.25 26.5 14C26.5 7.1 20.9 1.5 14 1.5Z" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+      <circle cx="14" cy="14" r="5" fill="#ffffff" opacity="0.98"/>
+      <circle cx="14" cy="14" r="2.25" fill="${fill}"/>
+    </svg>`;
 
-  onAdd() {
-    this.canvas = document.createElement('canvas');
-    this.canvas.className = 'station-canvas';
-    this.canvas.setAttribute('aria-hidden', 'true');
-    this.context = this.canvas.getContext('2d', { alpha: true });
-    this.getPanes().overlayLayer.appendChild(this.canvas);
-  }
-
-  draw() {
-    if (!this.canvas || !this.context || this.frameId) return;
-    this.frameId = requestAnimationFrame(() => {
-      this.frameId = 0;
-      this.render();
-    });
-  }
-
-  setUserPosition(position) {
-    this.userPosition = position;
-    if (!this.userLatLng) {
-      this.userLatLng = new google.maps.LatLng(position.lat, position.lng);
-    } else {
-      this.userLatLng = new google.maps.LatLng(position.lat, position.lng);
-    }
-    this.draw();
-  }
-
-  setNearestIndex(index) {
-    if (this.nearestIndex === index) return;
-    this.nearestIndex = index;
-    this.draw();
-  }
-
-  render() {
-    if (!this.canvas || !this.context) return;
-
-    const projection = this.getProjection();
-    const bounds = this.mapInstance.getBounds();
-    if (!projection || !bounds) return;
-
-    const southWest = projection.fromLatLngToDivPixel(bounds.getSouthWest());
-    const northEast = projection.fromLatLngToDivPixel(bounds.getNorthEast());
-    if (!southWest || !northEast) return;
-
-    const left = Math.floor(southWest.x);
-    const top = Math.floor(northEast.y);
-    const width = Math.max(1, Math.ceil(northEast.x - southWest.x));
-    const height = Math.max(1, Math.ceil(southWest.y - northEast.y));
-
-    this.canvas.style.left = `${left}px`;
-    this.canvas.style.top = `${top}px`;
-    this.canvas.style.width = `${width}px`;
-    this.canvas.style.height = `${height}px`;
-
-    const pixelWidth = Math.ceil(width * this.dpr);
-    const pixelHeight = Math.ceil(height * this.dpr);
-    if (pixelWidth !== this.pixelWidth || pixelHeight !== this.pixelHeight) {
-      this.pixelWidth = pixelWidth;
-      this.pixelHeight = pixelHeight;
-      this.canvas.width = pixelWidth;
-      this.canvas.height = pixelHeight;
-    }
-
-    const ctx = this.context;
-    ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
-    ctx.clearRect(0, 0, width, height);
-
-    const zoom = this.mapInstance.getZoom() ?? 12;
-    const stationRadius = zoom < 11 ? 2.25 : zoom < 13 ? 3 : zoom < 15 ? 4 : 5;
-    const stationStroke = zoom < 13 ? 1 : 1.5;
-    const margin = 12;
-
-    // Todas las estaciones normales se dibujan en una sola ruta Canvas.
-    ctx.beginPath();
-    for (let i = 0; i < this.stationLatLngs.length; i += 1) {
-      if (i === this.nearestIndex) continue;
-      const point = projection.fromLatLngToDivPixel(this.stationLatLngs[i]);
-      if (!point) continue;
-      const x = point.x - left;
-      const y = point.y - top;
-      if (x < -margin || x > width + margin || y < -margin || y > height + margin) continue;
-      ctx.moveTo(x + stationRadius, y);
-      ctx.arc(x, y, stationRadius, 0, Math.PI * 2);
-    }
-    ctx.fillStyle = 'rgba(15, 23, 42, 0.90)';
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.96)';
-    ctx.lineWidth = stationStroke;
-    ctx.stroke();
-
-    // La estación más cercana se pinta por encima sin crear otro Marker DOM.
-    if (this.nearestIndex >= 0) {
-      const point = projection.fromLatLngToDivPixel(this.stationLatLngs[this.nearestIndex]);
-      if (point) {
-        const x = point.x - left;
-        const y = point.y - top;
-        const radius = zoom < 13 ? 6 : 8;
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fillStyle = '#f97316';
-        ctx.fill();
-        ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth = 2.5;
-        ctx.stroke();
-      }
-    }
-
-    // Ubicación actual del usuario.
-    if (this.userLatLng) {
-      const point = projection.fromLatLngToDivPixel(this.userLatLng);
-      if (point) {
-        const x = point.x - left;
-        const y = point.y - top;
-        const radius = zoom < 13 ? 6 : 8;
-
-        ctx.beginPath();
-        ctx.arc(x, y, radius + 5, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(37, 99, 235, 0.16)';
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fillStyle = '#2563eb';
-        ctx.fill();
-        ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth = 3;
-        ctx.stroke();
-      }
-    }
-  }
-
-  onRemove() {
-    if (this.frameId) cancelAnimationFrame(this.frameId);
-    this.frameId = 0;
-    this.canvas?.remove();
-    this.canvas = null;
-    this.context = null;
-  }
+  return {
+    url: svgToDataUrl(svg),
+    scaledSize: new google.maps.Size(width, height),
+    anchor: new google.maps.Point(width / 2, height),
   };
 }
 
-function showStationInfo(station) {
-  const url = googleMapsDirectionsUrl(station);
-  infoWindow.setContent(`
-    <div class="info-window">
-      <strong>${escapeHtml(station.name)}</strong>
-      <a href="${url}" target="_blank" rel="noopener">Cómo llegar</a>
-    </div>
-  `);
-  infoWindow.setPosition({ lat: station.lat, lng: station.lng });
-  infoWindow.open({ map });
+function openNavigationChooser(station) {
+  if (!station) return;
+  navigationStation = station;
+  navStationName.textContent = station.name;
+  googleMapsNav.href = googleMapsDirectionsUrl(station);
+  wazeNav.href = wazeDirectionsUrl(station);
+
+  navBackdrop.classList.remove('hidden');
+  navSheet.classList.remove('hidden');
+  requestAnimationFrame(() => {
+    navBackdrop.classList.add('visible');
+    navSheet.classList.add('visible');
+  });
 }
 
-function handleMapClick(event) {
-  if (!event.latLng) return;
+function closeNavigationChooser() {
+  navBackdrop.classList.remove('visible');
+  navSheet.classList.remove('visible');
+  window.setTimeout(() => {
+    if (!navSheet.classList.contains('visible')) {
+      navBackdrop.classList.add('hidden');
+      navSheet.classList.add('hidden');
+    }
+  }, 180);
+}
 
-  const click = { lat: event.latLng.lat(), lng: event.latLng.lng() };
-  const result = findNearest(click);
-  const zoom = map.getZoom() ?? 12;
-  const hitRadiusMeters = Math.max(24, metersPerPixel(click.lat, zoom) * 12);
+function showStationInfo(station, marker) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'info-window';
 
-  if (result.distance <= hitRadiusMeters) showStationInfo(result.station);
+  const title = document.createElement('strong');
+  title.textContent = station.name;
+
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'info-nav-button';
+  button.textContent = 'Elegir navegación';
+  button.addEventListener('click', () => {
+    infoWindow.close();
+    openNavigationChooser(station);
+  });
+
+  wrapper.append(title, button);
+  infoWindow.setContent(wrapper);
+  infoWindow.open({ map, anchor: marker });
+}
+
+function createStationMarkers() {
+  normalPinIcon = createPinIcon('#0f2744');
+  nearestPinIcon = createPinIcon('#f97316', '#ffffff', 32, 43);
+
+  stationMarkers = stationData.map((station) => {
+    const marker = new google.maps.Marker({
+      position: { lat: station.lat, lng: station.lng },
+      title: station.name,
+      icon: normalPinIcon,
+      optimized: true,
+      clickable: true,
+      zIndex: 1,
+    });
+
+    marker.addListener('click', () => showStationInfo(station, marker));
+    return marker;
+  });
+
+  markerClusterer = new MarkerClusterer({
+    map,
+    markers: stationMarkers,
+    algorithm: new SuperClusterAlgorithm({
+      radius: 70,
+      maxZoom: 15,
+    }),
+  });
+}
+
+function setNearestMarker(index) {
+  if (nearestIndex === index) return;
+
+  if (nearestIndex >= 0 && stationMarkers[nearestIndex]) {
+    stationMarkers[nearestIndex].setIcon(normalPinIcon);
+    stationMarkers[nearestIndex].setZIndex(1);
+  }
+
+  nearestIndex = index;
+
+  if (nearestIndex >= 0 && stationMarkers[nearestIndex]) {
+    stationMarkers[nearestIndex].setIcon(nearestPinIcon);
+    stationMarkers[nearestIndex].setZIndex(5000);
+  }
 }
 
 function showNearest(position) {
   const result = findNearest(position);
   const nextStation = result.station;
   const nextDistanceText = formatDistance(result.distance);
-  const stationChanged = nearestIndex !== nextStation.index;
+  const stationChanged = nearestStation?.index !== nextStation.index;
 
   nearestStation = nextStation;
-  nearestIndex = nextStation.index;
 
   if (stationChanged) {
     nearestName.textContent = nextStation.name;
-    navigateBtn.href = googleMapsDirectionsUrl(nextStation);
-    stationOverlay.setNearestIndex(nearestIndex);
+    setNearestMarker(nextStation.index);
   }
 
   if (lastNearestDistanceText !== nextDistanceText) {
@@ -312,8 +239,8 @@ function showNearest(position) {
     nearestDistance.textContent = nextDistanceText;
   }
 
-  if (nearestCard.classList.contains('hidden')) nearestCard.classList.remove('hidden');
-  if (!statusCard.classList.contains('compact')) statusCard.classList.add('compact');
+  nearestCard.classList.remove('hidden');
+  statusCard.classList.add('compact');
 }
 
 function shouldProcessLocation(current, timestamp) {
@@ -334,7 +261,25 @@ function updateUserLocation(position) {
   lastLocation = current;
   lastLocationAt = timestamp;
 
-  stationOverlay.setUserPosition(current);
+  if (!userMarker) {
+    userMarker = new google.maps.Marker({
+      map,
+      position: current,
+      title: 'Tu ubicación',
+      optimized: true,
+      zIndex: 10000,
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 8,
+        fillColor: '#2563eb',
+        fillOpacity: 1,
+        strokeColor: '#ffffff',
+        strokeWeight: 3,
+      },
+    });
+  } else {
+    userMarker.setPosition(current);
+  }
 
   if (!userCentered) {
     userCentered = true;
@@ -374,6 +319,7 @@ function startLocation({ recenter = false } = {}) {
   }
 
   locationRequested = true;
+
   if (recenter && lastLocation) {
     map.panTo(lastLocation);
     map.setZoom(Math.max(map.getZoom() ?? 14, 14));
@@ -391,7 +337,9 @@ function startLocation({ recenter = false } = {}) {
 
 function fitAllStations() {
   const bounds = new google.maps.LatLngBounds();
-  for (let i = 0; i < stationData.length; i += 1) bounds.extend(stationData[i]);
+  for (let i = 0; i < stationData.length; i += 1) {
+    bounds.extend({ lat: stationData[i].lat, lng: stationData[i].lng });
+  }
   map.fitBounds(bounds, 44);
 }
 
@@ -417,14 +365,11 @@ async function init() {
 
     await loader.load();
 
-    // IMPORTANTE: OverlayView solo existe despues de cargar Maps JS.
-    // Crear la clase antes de este punto provoca `google is not defined` y deja la pantalla gris.
-    const StationCanvasOverlay = createStationCanvasOverlayClass();
-
     const mapOptions = {
       center: DEFAULT_CENTER,
       zoom: 12,
       disableDefaultUI: true,
+      zoomControl: true,
       clickableIcons: false,
       gestureHandling: 'greedy',
       keyboardShortcuts: false,
@@ -437,10 +382,8 @@ async function init() {
 
     map = new google.maps.Map(document.querySelector('#map'), mapOptions);
     infoWindow = new google.maps.InfoWindow({ disableAutoPan: false });
-    stationOverlay = new StationCanvasOverlay(map, stationData);
 
-    map.addListener('click', handleMapClick);
-
+    createStationMarkers();
     fitAllStations();
     startLocation();
   } catch (error) {
@@ -454,8 +397,21 @@ locateBtn.addEventListener('click', () => startLocation({ recenter: true }));
 
 centerNearestBtn.addEventListener('click', () => {
   if (!nearestStation || !map) return;
-  map.panTo(nearestStation);
-  map.setZoom(16);
+  map.panTo({ lat: nearestStation.lat, lng: nearestStation.lng });
+  map.setZoom(17);
+
+  const marker = stationMarkers[nearestStation.index];
+  if (marker) {
+    window.setTimeout(() => showStationInfo(nearestStation, marker), 180);
+  }
+});
+
+navigateBtn.addEventListener('click', () => openNavigationChooser(nearestStation));
+closeNavBtn.addEventListener('click', closeNavigationChooser);
+navBackdrop.addEventListener('click', closeNavigationChooser);
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && navigationStation) closeNavigationChooser();
 });
 
 document.addEventListener('visibilitychange', () => {
