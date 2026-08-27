@@ -2,591 +2,709 @@
   {
     "name": "CENTRAL",
     "lat": -12.058032,
-    "lng": -76.971298
+    "lng": -76.971298,
+    "gnv": false
   },
   {
     "name": "SANTA ANA",
     "lat": -12.01691,
-    "lng": -76.891403
+    "lng": -76.891403,
+    "gnv": false
   },
   {
     "name": "GRACO",
     "lat": -12.059839,
-    "lng": -76.951305
+    "lng": -76.951305,
+    "gnv": true
   },
   {
     "name": "LA MOLINA",
     "lat": -12.061937,
-    "lng": -76.961495
+    "lng": -76.961495,
+    "gnv": false
   },
   {
     "name": "LOS SAUCES",
     "lat": -12.064211,
-    "lng": -76.986889
+    "lng": -76.986889,
+    "gnv": true
   },
   {
     "name": "MAYORAZGO",
     "lat": -12.053097,
-    "lng": -76.941839
+    "lng": -76.941839,
+    "gnv": false
   },
   {
     "name": "MONTECARLO",
     "lat": -12.077125,
-    "lng": -76.97608
+    "lng": -76.97608,
+    "gnv": false
   },
   {
     "name": "BARRANCO",
     "lat": -12.13899,
-    "lng": -77.017625
+    "lng": -77.017625,
+    "gnv": false
   },
   {
     "name": "BREÑA",
     "lat": -12.055637,
-    "lng": -77.052643
+    "lng": -77.052643,
+    "gnv": false
   },
   {
     "name": "LARAVIL",
     "lat": -11.970986,
-    "lng": -76.753476
+    "lng": -76.753476,
+    "gnv": false
   },
   {
     "name": "CEBOTTO",
     "lat": -12.17789,
-    "lng": -76.996173
+    "lng": -76.996173,
+    "gnv": true
   },
   {
     "name": "CEDROS DE VILLA",
     "lat": -12.196552,
-    "lng": -77.010613
+    "lng": -77.010613,
+    "gnv": false
   },
   {
     "name": "TRONCO FIRME",
     "lat": -12.194266,
-    "lng": -77.002518
+    "lng": -77.002518,
+    "gnv": false
   },
   {
     "name": "ES SANTA ROSA",
     "lat": -11.901738,
-    "lng": -77.030505
+    "lng": -77.030505,
+    "gnv": false
   },
   {
     "name": "SAN FRANCISCO",
     "lat": -12.02996,
-    "lng": -76.999062
+    "lng": -76.999062,
+    "gnv": false
   },
   {
     "name": "COMAS",
     "lat": -11.989347,
-    "lng": -77.05726
+    "lng": -77.05726,
+    "gnv": false
   },
   {
     "name": "SUPER REPSOL",
     "lat": -12.005809,
-    "lng": -77.061305
+    "lng": -77.061305,
+    "gnv": false
   },
   {
     "name": "SARMIENTO",
     "lat": -12.068754,
-    "lng": -77.038007
+    "lng": -77.038007,
+    "gnv": false
   },
   {
     "name": "EL SAUCE",
     "lat": -12.083817,
-    "lng": -76.927588
+    "lng": -76.927588,
+    "gnv": false
   },
   {
     "name": "LA ROTONDA",
     "lat": -12.075204,
-    "lng": -76.955074
+    "lng": -76.955074,
+    "gnv": false
   },
   {
     "name": "SAIMON",
     "lat": -12.090954,
-    "lng": -76.951247
+    "lng": -76.951247,
+    "gnv": false
   },
   {
     "name": "STOP",
     "lat": -12.075078,
-    "lng": -76.963455
+    "lng": -76.963455,
+    "gnv": false
   },
   {
     "name": "GRAU 2",
     "lat": -12.060308,
-    "lng": -77.035169
+    "lng": -77.035169,
+    "gnv": false
   },
   {
     "name": "LEBAR",
     "lat": -12.089873,
-    "lng": -77.017438
+    "lng": -77.017438,
+    "gnv": false
   },
   {
     "name": "ASSA",
     "lat": -12.063417,
-    "lng": -77.020572
+    "lng": -77.020572,
+    "gnv": false
   },
   {
     "name": "IQUITOS",
     "lat": -12.071596,
-    "lng": -77.029803
+    "lng": -77.029803,
+    "gnv": true
   },
   {
     "name": "ARGENTINA 2",
     "lat": -12.046803,
-    "lng": -77.079415
+    "lng": -77.079415,
+    "gnv": false
   },
   {
     "name": "ARRIETA",
     "lat": -12.046237,
-    "lng": -77.072561
+    "lng": -77.072561,
+    "gnv": false
   },
   {
     "name": "COLONIAL",
     "lat": -12.048538,
-    "lng": -77.065169
+    "lng": -77.065169,
+    "gnv": false
   },
   {
     "name": "COLONIAL 2",
     "lat": -12.046458,
-    "lng": -77.044249
+    "lng": -77.044249,
+    "gnv": false
   },
   {
     "name": "MONUMENTAL",
     "lat": -12.055694,
-    "lng": -77.058139
+    "lng": -77.058139,
+    "gnv": false
   },
   {
     "name": "UNIVERSITARIA 2",
     "lat": -12.043028,
-    "lng": -77.077076
+    "lng": -77.077076,
+    "gnv": false
   },
   {
     "name": "DUEÑAS",
     "lat": -12.042228,
-    "lng": -77.065643
+    "lng": -77.065643,
+    "gnv": true
   },
   {
     "name": "CHUBUT",
     "lat": -12.06155,
-    "lng": -77.08696
+    "lng": -77.08696,
+    "gnv": false
   },
   {
     "name": "AREQUIPA",
     "lat": -12.116887,
-    "lng": -77.029437
+    "lng": -77.029437,
+    "gnv": false
   },
   {
     "name": "EL ROSEDAL",
     "lat": -12.130238,
-    "lng": -77.017959
+    "lng": -77.017959,
+    "gnv": false
   },
   {
     "name": "INDEPENDENCIA",
     "lat": -12.113589,
-    "lng": -77.026469
+    "lng": -77.026469,
+    "gnv": false
   },
   {
     "name": "MIRAFLORES",
     "lat": -12.120317,
-    "lng": -77.01832
+    "lng": -77.01832,
+    "gnv": false
   },
   {
     "name": "REDUCTO",
     "lat": -12.129385,
-    "lng": -77.023463
+    "lng": -77.023463,
+    "gnv": false
   },
   {
     "name": "TENAUD",
     "lat": -12.108849,
-    "lng": -77.030556
+    "lng": -77.030556,
+    "gnv": false
   },
   {
     "name": "SANTA MARIA",
     "lat": -12.117507,
-    "lng": -77.044241
+    "lng": -77.044241,
+    "gnv": false
   },
   {
     "name": "ES PARQUE MORA",
     "lat": -12.11072,
-    "lng": -77.046418
+    "lng": -77.046418,
+    "gnv": false
   },
   {
     "name": "BOLIVAR 2",
     "lat": -12.073424,
-    "lng": -77.055877
+    "lng": -77.055877,
+    "gnv": false
   },
   {
     "name": "LOS GRAMADALES",
     "lat": -11.853591,
-    "lng": -77.088884
+    "lng": -77.088884,
+    "gnv": false
   },
   {
     "name": "PRO",
     "lat": -11.939853,
-    "lng": -77.071077
+    "lng": -77.071077,
+    "gnv": false
   },
   {
     "name": "SAN CARLOS",
     "lat": -11.882867,
-    "lng": -77.067989
+    "lng": -77.067989,
+    "gnv": false
   },
   {
     "name": "SAN CRISTOBAL",
     "lat": -12.03908,
-    "lng": -77.016024
+    "lng": -77.016024,
+    "gnv": false
   },
   {
     "name": "TARAPACA",
     "lat": -12.026932,
-    "lng": -77.033602
+    "lng": -77.033602,
+    "gnv": false
   },
   {
     "name": "ANGAMOS",
     "lat": -12.110211,
-    "lng": -76.979848
+    "lng": -76.979848,
+    "gnv": false
   },
   {
     "name": "SAN BORJA",
     "lat": -12.086706,
-    "lng": -76.991906
+    "lng": -76.991906,
+    "gnv": false
   },
   {
     "name": "EL AVION",
     "lat": -12.105398,
-    "lng": -77.000966
+    "lng": -77.000966,
+    "gnv": false
   },
   {
     "name": "EL PARQUE",
     "lat": -12.103543,
-    "lng": -77.014952
+    "lng": -77.014952,
+    "gnv": false
   },
   {
     "name": "PARQUE SUR",
     "lat": -12.1035496,
-    "lng": -77.0149744
+    "lng": -77.0149744,
+    "gnv": false
   },
   {
     "name": "PARODI",
     "lat": -12.091536,
-    "lng": -77.030255
+    "lng": -77.030255,
+    "gnv": false
   },
   {
     "name": "TIKI TOO",
     "lat": -12.091998,
-    "lng": -77.013682
+    "lng": -77.013682,
+    "gnv": false
   },
   {
     "name": "ES DOS DE MAYO",
     "lat": -12.092172,
-    "lng": -77.04498
+    "lng": -77.04498,
+    "gnv": false
   },
   {
     "name": "TRI STAR",
     "lat": -12.010174,
-    "lng": -77.003782
+    "lng": -77.003782,
+    "gnv": true
   },
   {
     "name": "ARRIOLA",
     "lat": -12.071676,
-    "lng": -77.002354
+    "lng": -77.002354,
+    "gnv": true
   },
   {
     "name": "LOS MILAGROS",
     "lat": -12.010514,
-    "lng": -77.05335
+    "lng": -77.05335,
+    "gnv": false
   },
   {
     "name": "UNIVERSITARIA",
     "lat": -11.988134,
-    "lng": -77.080911
+    "lng": -77.080911,
+    "gnv": false
   },
   {
     "name": "FAUCETT",
     "lat": -12.065011,
-    "lng": -77.097412
+    "lng": -77.097412,
+    "gnv": false
   },
   {
     "name": "LA MARINA 2",
     "lat": -12.077781,
-    "lng": -77.089851
+    "lng": -77.089851,
+    "gnv": false
   },
   {
     "name": "PRECURSORES",
     "lat": -12.110493,
-    "lng": -76.979717
+    "lng": -76.979717,
+    "gnv": false
   },
   {
     "name": "SAN BLAS",
     "lat": -12.1481099,
-    "lng": -76.986126
+    "lng": -76.986126,
+    "gnv": false
   },
   {
     "name": "ES SURCO",
     "lat": -12.146509,
-    "lng": -77.009496
+    "lng": -77.009496,
+    "gnv": false
   },
   {
     "name": "LAS TIENDAS",
     "lat": -12.102309,
-    "lng": -77.020943
+    "lng": -77.020943,
+    "gnv": false
   },
   {
     "name": "PRINCIPAL",
     "lat": -12.107381,
-    "lng": -77.010592
+    "lng": -77.010592,
+    "gnv": false
   },
   {
     "name": "ANGAMOS 2",
     "lat": -12.112546,
-    "lng": -77.01346
+    "lng": -77.01346,
+    "gnv": true
   },
   {
     "name": "CHANCAY 1 DEL PINO",
     "lat": -11.600712,
-    "lng": -77.247452
+    "lng": -77.247452,
+    "gnv": false
   },
   {
     "name": "CHANCAY 2",
     "lat": -11.559729,
-    "lng": -77.266179
+    "lng": -77.266179,
+    "gnv": false
   },
   {
     "name": "HUARAL",
     "lat": -11.498132,
-    "lng": -77.214548
+    "lng": -77.214548,
+    "gnv": false
   },
   {
     "name": "MELLIZAS I",
     "lat": -12.696268,
-    "lng": -76.64376
+    "lng": -76.64376,
+    "gnv": false
   },
   {
     "name": "MELLIZAS II",
     "lat": -12.695833,
-    "lng": -76.643108
+    "lng": -76.643108,
+    "gnv": false
   },
   {
     "name": "GENE",
     "lat": -12.053274,
-    "lng": -77.095477
+    "lng": -77.095477,
+    "gnv": false
   },
   {
     "name": "CENTENARIO",
     "lat": -12.050358,
-    "lng": -77.12611
+    "lng": -77.12611,
+    "gnv": false
   },
   {
     "name": "LA RESERVA",
     "lat": -11.94141,
-    "lng": -77.130756
+    "lng": -77.130756,
+    "gnv": false
   },
   {
     "name": "EES. REVOREDO",
     "lat": -12.027377,
-    "lng": -77.10273
+    "lng": -77.10273,
+    "gnv": false
   },
   {
     "name": "EE.SS. ELAION",
     "lat": -12.049811,
-    "lng": -77.113569
+    "lng": -77.113569,
+    "gnv": false
   },
   {
     "name": "LOAYZA",
     "lat": -12.013952,
-    "lng": -77.095355
+    "lng": -77.095355,
+    "gnv": false
   },
   {
     "name": "NEUQUEN",
     "lat": -12.05,
-    "lng": -77.098486
+    "lng": -77.098486,
+    "gnv": false
   },
   {
     "name": "GAMBETA",
     "lat": -12.038388,
-    "lng": -77.127376
+    "lng": -77.127376,
+    "gnv": false
   },
   {
     "name": "CANTOLAO",
     "lat": -11.997052,
-    "lng": -77.124632
+    "lng": -77.124632,
+    "gnv": true
   },
   {
     "name": "TIERRA",
     "lat": -11.929529,
-    "lng": -77.129741
+    "lng": -77.129741,
+    "gnv": false
   },
   {
     "name": "SEVILLA",
     "lat": -16.371559,
-    "lng": -71.544483
+    "lng": -71.544483,
+    "gnv": false
   },
   {
     "name": "JORGE CHAVEZ",
     "lat": -16.406768,
-    "lng": -71.534609
+    "lng": -71.534609,
+    "gnv": false
   },
   {
     "name": "ZAMACOLA",
     "lat": -16.355459,
-    "lng": -71.566302
+    "lng": -71.566302,
+    "gnv": false
   },
   {
     "name": "GENOVA 1",
     "lat": -16.596758,
-    "lng": -72.704825
+    "lng": -72.704825,
+    "gnv": false
   },
   {
     "name": "GENOVA 3",
     "lat": -16.587754,
-    "lng": -72.720722
+    "lng": -72.720722,
+    "gnv": false
   },
   {
     "name": "LA VICTORIA",
     "lat": -6.788203,
-    "lng": -79.844418
+    "lng": -79.844418,
+    "gnv": false
   },
   {
     "name": "MILANO",
     "lat": -6.816169,
-    "lng": -79.829372
+    "lng": -79.829372,
+    "gnv": false
   },
   {
     "name": "BUENOS AIRES",
     "lat": -9.120544,
-    "lng": -78.534719
+    "lng": -78.534719,
+    "gnv": false
   },
   {
     "name": "LOBITOS",
     "lat": -18.007008,
-    "lng": -70.255752
+    "lng": -70.255752,
+    "gnv": false
   },
   {
     "name": "FLORES DEL GOLF",
     "lat": -8.135284,
-    "lng": -79.036587
+    "lng": -79.036587,
+    "gnv": false
   },
   {
     "name": "PANAMERICANA SUR",
     "lat": -8.138553,
-    "lng": -79.015374
+    "lng": -79.015374,
+    "gnv": false
   },
   {
     "name": "PRIMAVERA",
     "lat": -8.101038,
-    "lng": -79.03621
+    "lng": -79.03621,
+    "gnv": false
   },
   {
     "name": "SAN FERNANDO",
     "lat": -8.096971,
-    "lng": -79.03835
+    "lng": -79.03835,
+    "gnv": false
   },
   {
     "name": "ULTRACOM",
     "lat": -8.041931,
-    "lng": -79.058916
+    "lng": -79.058916,
+    "gnv": false
   },
   {
     "name": "ESMO",
     "lat": -17.188895,
-    "lng": -70.921203
+    "lng": -70.921203,
+    "gnv": false
   },
   {
     "name": "INFANCIA",
     "lat": -13.529526,
-    "lng": -71.968416
+    "lng": -71.968416,
+    "gnv": false
   },
   {
     "name": "ALAMEDA",
     "lat": -13.526583,
-    "lng": -71.971742
+    "lng": -71.971742,
+    "gnv": false
   },
   {
     "name": "F&Z",
     "lat": -13.488808,
-    "lng": -72.053392
+    "lng": -72.053392,
+    "gnv": false
   },
   {
     "name": "PETROMUNDO",
     "lat": -13.489071,
-    "lng": -72.053043
+    "lng": -72.053043,
+    "gnv": false
   },
   {
     "name": "CAJAS",
     "lat": -12.000198,
-    "lng": -75.252253
+    "lng": -75.252253,
+    "gnv": false
   },
   {
     "name": "CHILCA",
     "lat": -12.091779,
-    "lng": -75.213171
+    "lng": -75.213171,
+    "gnv": false
   },
   {
     "name": "SAN CARLOS A",
     "lat": -12.056533,
-    "lng": -75.202947
+    "lng": -75.202947,
+    "gnv": false
   },
   {
     "name": "SICAYA",
     "lat": -12.032954,
-    "lng": -75.263716
+    "lng": -75.263716,
+    "gnv": false
   },
   {
     "name": "CHILCA",
     "lat": -12.091779,
-    "lng": -75.213171
+    "lng": -75.213171,
+    "gnv": false
   },
   {
     "name": "SAN CARLOS A",
     "lat": -12.056533,
-    "lng": -75.202947
+    "lng": -75.202947,
+    "gnv": false
   },
   {
     "name": "SICAYA",
     "lat": -12.032954,
-    "lng": -75.263716
+    "lng": -75.263716,
+    "gnv": false
   },
   {
     "name": "COLONIAL A",
     "lat": -12.0470992,
-    "lng": -77.0537825
+    "lng": -77.0537825,
+    "gnv": true
   },
   {
     "name": "CHEPEN",
     "lat": -12.2384949,
-    "lng": -76.9129002
+    "lng": -76.9129002,
+    "gnv": false
   },
   {
     "name": "VILLA EL SALVADOR",
     "lat": -12.1930706,
-    "lng": -76.9454563
+    "lng": -76.9454563,
+    "gnv": false
   },
   {
     "name": "SAN JUAN",
     "lat": -12.161416,
-    "lng": -76.956498
+    "lng": -76.956498,
+    "gnv": true
   },
   {
     "name": "EL DERBY",
     "lat": -12.0989315,
-    "lng": -76.9709302
+    "lng": -76.9709302,
+    "gnv": false
   },
   {
     "name": "LOS ANGELES",
     "lat": -11.9465587,
-    "lng": -76.9838309
+    "lng": -76.9838309,
+    "gnv": false
   },
   {
     "name": "VIGIL",
     "lat": -12.0613938,
-    "lng": -77.1339415
+    "lng": -77.1339415,
+    "gnv": false
   },
   {
     "name": "LA ENCANTADA",
     "lat": -12.1834636,
-    "lng": -77.0091751
+    "lng": -77.0091751,
+    "gnv": false
   },
   {
     "name": "MEXICO 1",
     "lat": -12.0732791,
-    "lng": -77.0167315
+    "lng": -77.0167315,
+    "gnv": false
   }
 ]

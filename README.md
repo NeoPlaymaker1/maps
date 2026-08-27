@@ -1,42 +1,13 @@
 # Estaciones - RED OPERADORA CANTOLAO
 
-Versión equilibrada para GitHub + Vercel.
+Web optimizada para Google Maps con geolocalización, estación más cercana, clustering y selector de navegación Google Maps/Waze.
 
-## Cambios principales
+## Filtro GNV
 
-- 118 estaciones mostradas como pins clásicos y nítidos.
-- Marker clustering para mantener el zoom y el desplazamiento fluidos.
-- Estación más cercana resaltada en naranja.
-- Ubicación actual en azul.
-- GPS filtrado para evitar actualizaciones innecesarias.
-- Selector de navegación: Google Maps o Waze.
-- Sin filtros blur sobre el mapa.
+Se marcaron como GNV las 11 estaciones proporcionadas: GRACO, LOS SAUCES, CEBOTTO, IQUITOS, COLONIAL A, DUEÑAS, TRI STAR, SAN JUAN, ARRIOLA, ANGAMOS 2 y CANTOLAO.
 
-## Variable de entorno
+El filtro **GNV** oculta las demás estaciones y recalcula la estación más cercana únicamente entre esas 11. Los pines GNV aparecen verdes cuando se muestran todas las estaciones; la estación más cercana sigue resaltándose en naranja.
 
-En Vercel configura:
+## Vercel
 
-```text
-VITE_GOOGLE_MAPS_API_KEY=TU_API_KEY
-```
-
-Opcional:
-
-```text
-VITE_GOOGLE_MAPS_MAP_ID=TU_MAP_ID
-```
-
-## Desarrollo local
-
-```bash
-npm install
-npm run dev
-```
-
-## Producción
-
-```bash
-npm run build
-```
-
-Vercel detectará Vite y publicará la carpeta `dist`.
+Configura `VITE_GOOGLE_MAPS_API_KEY` como variable de entorno y despliega normalmente.

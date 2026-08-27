@@ -12,10 +12,16 @@ const MAX_GPS_SILENCE_MS = 5000;
 
 const stationData = stations.map((station, index) => ({
   ...station,
+  gnv: Boolean(station.gnv),
   index,
   latRad: (station.lat * Math.PI) / 180,
   lngRad: (station.lng * Math.PI) / 180,
 }));
+
+const FILTERS = {
+  all: () => true,
+  gnv: (station) => station.gnv,
+};
 
 let map;
 let infoWindow;
@@ -32,7 +38,9 @@ let nearestIndex = -1;
 let lastNearestDistanceText = '';
 let lastStatusSignature = '';
 let navigationStation = null;
+let activeFilter = 'all';
 let normalPinIcon;
+let gnvPinIcon;
 let nearestPinIcon;
 
 const statusCard = document.querySelector('#statusCard');
@@ -46,6 +54,10 @@ const nearestDistance = document.querySelector('#nearestDistance');
 const navigateBtn = document.querySelector('#navigateBtn');
 const centerNearestBtn = document.querySelector('#centerNearestBtn');
 const locateBtn = document.querySelector('#locateBtn');
+const stationCount = document.querySelector('#stationCount');
+const allCount = document.querySelector('#allCount');
+const gnvCount = document.querySelector('#gnvCount');
+const filterButtons = [...document.querySelectorAll('[data-filter]')];
 const fatal = document.querySelector('#fatal');
 const navBackdrop = document.querySelector('#navBackdrop');
 const navSheet = document.querySelector('#navSheet');
@@ -64,6 +76,15 @@ function setStatus(title, subtitle, icon = '📍', eyebrow = 'Ubicación') {
   statusSubtitle.textContent = subtitle;
 }
 
+function getVisibleStations() {
+  const matcher = FILTERS[activeFilter] || FILTERS.all;
+  return stationData.filter(matcher);
+}
+
+function getBaseIcon(station) {
+  return station.gnv ? gnvPinIcon : normalPinIcon;
+}
+
 function haversineMeters(a, b) {
   const toRad = Math.PI / 180;
   const lat1 = a.lat * toRad;
@@ -77,13 +98,16 @@ function haversineMeters(a, b) {
 }
 
 function findNearest(position) {
+  const visibleStations = getVisibleStations();
+  if (!visibleStations.length) return null;
+
   const latRad = (position.lat * Math.PI) / 180;
   const lngRad = (position.lng * Math.PI) / 180;
-  let best = stationData[0];
+  let best = visibleStations[0];
   let bestSquared = Infinity;
 
-  for (let i = 0; i < stationData.length; i += 1) {
-    const station = stationData[i];
+  for (let i = 0; i < visibleStations.length; i += 1) {
+    const station = visibleStations[i];
     const x = (station.lngRad - lngRad) * Math.cos((station.latRad + latRad) / 2);
     const y = station.latRad - latRad;
     const squared = x * x + y * y;
@@ -146,6 +170,7 @@ function openNavigationChooser(station) {
 }
 
 function closeNavigationChooser() {
+  navigationStation = null;
   navBackdrop.classList.remove('visible');
   navSheet.classList.remove('visible');
   window.setTimeout(() => {
@@ -162,6 +187,14 @@ function showStationInfo(station, marker) {
 
   const title = document.createElement('strong');
   title.textContent = station.name;
+  wrapper.append(title);
+
+  if (station.gnv) {
+    const badge = document.createElement('span');
+    badge.className = 'gnv-badge';
+    badge.textContent = 'GNV';
+    wrapper.append(badge);
+  }
 
   const button = document.createElement('button');
   button.type = 'button';
@@ -172,20 +205,21 @@ function showStationInfo(station, marker) {
     openNavigationChooser(station);
   });
 
-  wrapper.append(title, button);
+  wrapper.append(button);
   infoWindow.setContent(wrapper);
   infoWindow.open({ map, anchor: marker });
 }
 
 function createStationMarkers() {
   normalPinIcon = createPinIcon('#0f2744');
+  gnvPinIcon = createPinIcon('#16a34a');
   nearestPinIcon = createPinIcon('#f97316', '#ffffff', 32, 43);
 
   stationMarkers = stationData.map((station) => {
     const marker = new google.maps.Marker({
       position: { lat: station.lat, lng: station.lng },
       title: station.name,
-      icon: normalPinIcon,
+      icon: getBaseIcon(station),
       optimized: true,
       clickable: true,
       zIndex: 1,
@@ -209,7 +243,8 @@ function setNearestMarker(index) {
   if (nearestIndex === index) return;
 
   if (nearestIndex >= 0 && stationMarkers[nearestIndex]) {
-    stationMarkers[nearestIndex].setIcon(normalPinIcon);
+    const previous = stationData[nearestIndex];
+    stationMarkers[nearestIndex].setIcon(getBaseIcon(previous));
     stationMarkers[nearestIndex].setZIndex(1);
   }
 
@@ -223,6 +258,13 @@ function setNearestMarker(index) {
 
 function showNearest(position) {
   const result = findNearest(position);
+  if (!result) {
+    nearestStation = null;
+    nearestIndex = -1;
+    nearestCard.classList.add('hidden');
+    return;
+  }
+
   const nextStation = result.station;
   const nextDistanceText = formatDistance(result.distance);
   const stationChanged = nearestStation?.index !== nextStation.index;
@@ -241,6 +283,66 @@ function showNearest(position) {
 
   nearestCard.classList.remove('hidden');
   statusCard.classList.add('compact');
+}
+
+function fitVisibleStations() {
+  const visibleStations = getVisibleStations();
+  if (!map || !visibleStations.length) return;
+  const bounds = new google.maps.LatLngBounds();
+  visibleStations.forEach((station) => bounds.extend({ lat: station.lat, lng: station.lng }));
+  map.fitBounds(bounds, 44);
+}
+
+function updateFilterUi() {
+  const visibleStations = getVisibleStations();
+  stationCount.textContent = activeFilter === 'gnv'
+    ? `${visibleStations.length} estaciones GNV`
+    : `${visibleStations.length} estaciones`;
+
+  filterButtons.forEach((button) => {
+    const isActive = button.dataset.filter === activeFilter;
+    button.classList.toggle('active', isActive);
+    button.setAttribute('aria-pressed', String(isActive));
+  });
+}
+
+function applyFilter(filterName, { fit = true } = {}) {
+  if (!FILTERS[filterName] || !markerClusterer) return;
+  activeFilter = filterName;
+
+  if (nearestIndex >= 0 && stationMarkers[nearestIndex]) {
+    stationMarkers[nearestIndex].setIcon(getBaseIcon(stationData[nearestIndex]));
+    stationMarkers[nearestIndex].setZIndex(1);
+  }
+  nearestIndex = -1;
+  nearestStation = null;
+  lastNearestDistanceText = '';
+
+  const visibleStations = getVisibleStations();
+  const visibleMarkers = visibleStations.map((station) => stationMarkers[station.index]);
+
+  infoWindow.close();
+  markerClusterer.clearMarkers();
+  markerClusterer.addMarkers(visibleMarkers);
+  updateFilterUi();
+
+  if (lastLocation) {
+    showNearest(lastLocation);
+    setStatus(
+      filterName === 'gnv' ? 'Filtro GNV activo' : 'Mostrando todas las estaciones',
+      filterName === 'gnv'
+        ? 'La estación más cercana ahora se calcula solo entre estaciones con GNV.'
+        : 'La estación más cercana se calcula entre todas las estaciones.',
+      '✓',
+      'FILTRO',
+    );
+    if (fit) {
+      map.panTo(lastLocation);
+      map.setZoom(Math.max(map.getZoom() ?? 14, 13));
+    }
+  } else if (fit) {
+    fitVisibleStations();
+  }
 }
 
 function shouldProcessLocation(current, timestamp) {
@@ -287,7 +389,8 @@ function updateUserLocation(position) {
     if ((map.getZoom() ?? 0) < 14) map.setZoom(14);
   }
 
-  setStatus('Ubicación encontrada', 'La estación más cercana se actualiza con tu posición.', '✓', 'GPS ACTIVO');
+  const filterLabel = activeFilter === 'gnv' ? ' GNV' : '';
+  setStatus('Ubicación encontrada', `La estación${filterLabel} más cercana se actualiza con tu posición.`, '✓', 'GPS ACTIVO');
   showNearest(current);
 }
 
@@ -335,14 +438,6 @@ function startLocation({ recenter = false } = {}) {
   });
 }
 
-function fitAllStations() {
-  const bounds = new google.maps.LatLngBounds();
-  for (let i = 0; i < stationData.length; i += 1) {
-    bounds.extend({ lat: stationData[i].lat, lng: stationData[i].lng });
-  }
-  map.fitBounds(bounds, 44);
-}
-
 window.gm_authFailure = () => {
   fatal.classList.remove('hidden');
   fatal.innerHTML = '<strong>Google Maps rechazó la API key.</strong><span>Revisa Maps JavaScript API, facturación y los HTTP referrers autorizados para este dominio.</span>';
@@ -350,6 +445,10 @@ window.gm_authFailure = () => {
 };
 
 async function init() {
+  allCount.textContent = String(stationData.length);
+  gnvCount.textContent = String(stationData.filter((station) => station.gnv).length);
+  updateFilterUi();
+
   if (!API_KEY) {
     fatal.classList.remove('hidden');
     fatal.innerHTML = '<strong>Falta configurar Google Maps.</strong><span>Agrega VITE_GOOGLE_MAPS_API_KEY en las variables de entorno de Vercel.</span>';
@@ -384,7 +483,7 @@ async function init() {
     infoWindow = new google.maps.InfoWindow({ disableAutoPan: false });
 
     createStationMarkers();
-    fitAllStations();
+    applyFilter('all', { fit: true });
     startLocation();
   } catch (error) {
     console.error(error);
@@ -392,6 +491,10 @@ async function init() {
     fatal.innerHTML = '<strong>No se pudo cargar Google Maps.</strong><span>Verifica la API key, la facturación y las restricciones del dominio.</span>';
   }
 }
+
+filterButtons.forEach((button) => {
+  button.addEventListener('click', () => applyFilter(button.dataset.filter));
+});
 
 locateBtn.addEventListener('click', () => startLocation({ recenter: true }));
 

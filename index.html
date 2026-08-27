@@ -13,10 +13,19 @@
       <header class="topbar">
         <div>
           <strong>RED OPERADORA CANTOLAO</strong>
-          <span>118 estaciones</span>
+          <span id="stationCount">118 estaciones</span>
         </div>
         <button id="locateBtn" class="icon-button" type="button" aria-label="Usar mi ubicación">◎</button>
       </header>
+
+      <nav class="filter-bar" aria-label="Filtrar estaciones por combustible">
+        <button class="filter-chip active" type="button" data-filter="all" aria-pressed="true">
+          <span>Todas</span><b id="allCount">118</b>
+        </button>
+        <button class="filter-chip gnv-filter" type="button" data-filter="gnv" aria-pressed="false">
+          <i class="filter-dot" aria-hidden="true"></i><span>GNV</span><b id="gnvCount">11</b>
+        </button>
+      </nav>
 
       <section id="statusCard" class="status-card">
         <div id="statusIcon" class="status-icon">📍</div>
