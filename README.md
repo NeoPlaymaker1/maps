@@ -1,55 +1,63 @@
-# Estaciones - RED OPERADORA CANTOLAO (optimizado)
+# Estaciones - RED OPERADORA CANTOLAO
 
 Web móvil para visualizar 118 estaciones sobre Google Maps, detectar la ubicación actual y encontrar automáticamente la estación más cercana.
 
-## Optimización aplicada
+## Funciones
 
-- Las 118 estaciones ya no usan 118 `google.maps.Marker`.
-- Todos los puntos se dibujan en **un único Canvas Overlay**, reduciendo drásticamente DOM, SVG, listeners y repintados durante zoom/pan.
-- Solo existe un `InfoWindow`, abierto por detección de proximidad al tocar el mapa.
-- La estación más cercana y la ubicación del usuario se dibujan en el mismo canvas; no se crean/destruyen markers.
-- Los repintados del overlay se agrupan con `requestAnimationFrame`.
-- El canvas usa un DPR máximo de 2 para evitar renderizado 3x/4x innecesario en móviles de alta densidad.
-- Se evita procesar jitter GPS: una actualización se procesa si el usuario se mueve al menos 8 m o pasan 4 s.
-- El seguimiento GPS se suspende cuando la pestaña queda oculta.
-- Se eliminaron `backdrop-filter: blur(...)` y transiciones costosas sobre el mapa.
-- Los paneles usan fondos sólidos y contención CSS para reducir recomposición.
-- Google Maps carga con la versión `quarterly`, más estable para producción.
-- Vite minifica JS/CSS en producción y no genera source maps.
+- Google Maps embebido.
+- 118 estaciones cargadas desde `stations.json`.
+- Geolocalización en tiempo real con `watchPosition()`.
+- Cálculo local de distancia por Haversine.
+- Estación más cercana resaltada.
+- Botón **Cómo llegar** que abre la navegación de Google Maps.
+- Compatible con GitHub + Vercel.
 
 ## Desarrollo local
 
 ```bash
 npm install
 cp .env.example .env.local
-npm run dev
 ```
 
-En `.env.local`:
+Edita `.env.local` y coloca tu clave:
 
-```text
+```env
 VITE_GOOGLE_MAPS_API_KEY=TU_API_KEY
 ```
 
-Opcionalmente puedes usar un Map ID:
+Luego:
 
-```text
-VITE_GOOGLE_MAPS_MAP_ID=TU_MAP_ID
+```bash
+npm run dev
 ```
 
-## Vercel
+> La geolocalización funciona en `localhost` y en sitios HTTPS.
 
-1. Sube todos los archivos a GitHub, reemplazando el proyecto anterior.
-2. En Vercel conserva `VITE_GOOGLE_MAPS_API_KEY` en **Environment Variables**.
-3. Vercel detectará Vite automáticamente.
-4. Haz un nuevo deploy.
+## Google Maps Platform
+
+En Google Cloud habilita **Maps JavaScript API** y configura una API key.
+
+La API key de Maps JavaScript se entrega al navegador por diseño. La seguridad debe hacerse restringiendo la clave por **HTTP referrers** y limitándola únicamente a **Maps JavaScript API**.
+
+Para producción puedes permitir, por ejemplo:
+
+- `https://tu-proyecto.vercel.app/*`
+- `https://tu-dominio.com/*`
+
+## Deploy en Vercel
+
+1. Sube esta carpeta a un repositorio GitHub.
+2. En Vercel elige **Add New > Project** e importa el repositorio.
+3. Vercel debería detectar Vite automáticamente.
+4. En **Settings > Environment Variables** agrega:
+   - Name: `VITE_GOOGLE_MAPS_API_KEY`
+   - Value: tu API key.
+5. Haz Deploy.
 
 Build command: `npm run build`
 
 Output directory: `dist`
 
-La geolocalización requiere HTTPS (Vercel ya lo proporciona) o `localhost`.
+## Nota sobre la API key
 
-## API key
-
-La clave de Maps JavaScript se entrega al navegador por diseño. Restringe la key en Google Cloud por HTTP referrer y limita su uso a Maps JavaScript API.
+Aunque se configure mediante variable de entorno, una API key usada por Maps JavaScript termina siendo visible en el navegador. No la trates como un secreto de servidor. Restringe la key en Google Cloud por dominio y API.
